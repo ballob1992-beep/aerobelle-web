@@ -1,0 +1,46 @@
+<script>
+(function () {
+  var root = document.getElementById('abp'); if (!root) return;
+  var BUNDLE = 53839855845712, DEVICE = 52454664012112;
+  var main = document.getElementById('abp-main-img');
+  root.querySelectorAll('.abp-thumbs button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      main.src = b.getAttribute('data-src');
+      root.querySelectorAll('.abp-thumbs button').forEach(function (x) { x.setAttribute('aria-current', x === b ? 'true' : 'false'); });
+    });
+  });
+  function fmt(n) { return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' Ft'; }
+  function state() {
+    var pack = root.querySelector('input[name=abp-pack]:checked').value;
+    var total = pack === 'bundle' ? 45990 : 51900;
+    var items = [ { id: pack === 'bundle' ? BUNDLE : DEVICE, quantity: 1 } ];
+    if (pack === 'device') {
+      root.querySelectorAll('input[data-addon]:checked').forEach(function (c) {
+        total += parseInt(c.getAttribute('data-price'), 10);
+        items.push({ id: parseInt(c.getAttribute('data-addon'), 10), quantity: 1 });
+      });
+    }
+    return { pack: pack, total: total, items: items };
+  }
+  function render() {
+    var s = state();
+    root.querySelectorAll('[data-abp-total]').forEach(function (e) { e.textContent = fmt(s.total); });
+    root.querySelectorAll('[data-abp-label]').forEach(function (e) { e.textContent = (s.pack === 'bundle' ? 'Teljes csomag' : 'Csak a készülék') + ' · ' + fmt(s.total); });
+  }
+  root.addEventListener('change', render);
+  var cta = document.getElementById('abp-cta'), err = document.getElementById('abp-err');
+  function add() {
+    var s = state(); cta.disabled = true; err.style.display = 'none';
+    fetch('/cart/add.js', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ items: s.items }) })
+      .then(function (r) { if (!r.ok) throw new Error('add'); window.location.href = '/cart'; })
+      .catch(function () { cta.disabled = false; err.style.display = 'block'; });
+  }
+  cta.addEventListener('click', add);
+  document.getElementById('abp-sticky-cta').addEventListener('click', add);
+  var sticky = document.getElementById('abp-sticky');
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (en) { sticky.classList.toggle('on', !en[0].isIntersecting); }).observe(cta);
+  }
+  render();
+})();
+</script>
