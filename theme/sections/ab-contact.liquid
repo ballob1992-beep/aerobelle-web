@@ -1,0 +1,60 @@
+{%- render 'ab-page-style' -%}
+<style>
+.abk-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:28px;align-items:start}
+.abk-f{display:flex;flex-direction:column;gap:14px}
+.abk-f label{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:700}
+.abk-f input,.abk-f textarea{font:inherit;font-size:16px;font-weight:400;border:1.5px solid #E3D9D0;border-radius:12px;padding:13px 14px;background:#FFFFFF;color:#2B2B2B;width:100%}
+.abk-f input:focus,.abk-f textarea:focus{outline:2px solid #FE6C3B;border-color:#FE6C3B}
+.abk-f textarea{min-height:150px;resize:vertical}
+.abk-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.abk-ok{background:#EAF5EA;border:2px solid #2E7D32;border-radius:14px;padding:16px;font-size:15.5px}
+.abk-err{background:#FFF3EE;border:2px solid #FE6C3B;border-radius:14px;padding:16px;font-size:15px}
+.abk-c{display:flex;gap:14px;align-items:flex-start}
+.abk-c .i{width:44px;height:44px;border-radius:12px;background:#F9F4F0;display:flex;align-items:center;justify-content:center;font-size:20px;flex:none}
+.abk-c b{display:block;font-size:16px}
+.abk-c span,.abk-c a{font-size:15px;color:#4A433E}
+.abk-map{border:0;width:100%;height:260px;border-radius:18px;display:block}
+@media (max-width:860px){.abk-grid{grid-template-columns:1fr}.abk-2{grid-template-columns:1fr}}
+</style>
+<div class="abh">
+<div class="wrap sec">
+  <div style="max-width:720px;margin-bottom:28px">
+    <div class="eyebrow">Kapcsolat</div>
+    <h1 style="font-size:clamp(36px,5vw,56px);margin:8px 0 12px">Kérdezz bátran</h1>
+    <p style="font-size:17px;color:#4A433E">Akár vásárlás előtt állsz, akár a hajformázód használatában akadtál el: írj vagy hívj, egy ember válaszol – általában még aznap.</p>
+  </div>
+  <div class="abk-grid">
+    <div class="card" style="padding:28px">
+      {%- form 'contact', id: 'ab-contact-form', class: 'abk-f' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="abk-ok" role="status"><b>Köszönjük, megkaptuk az üzeneted!</b><br>Hétköznap általában még aznap válaszolunk az általad megadott e-mail-címre.</div>
+        {%- elsif form.errors -%}
+          <div class="abk-err" role="alert">Kérjük, ellenőrizd a megadott adatokat (név, érvényes e-mail-cím, üzenet).</div>
+        {%- endif -%}
+        <b style="font-size:20px">Írj nekünk</b>
+        <div class="abk-2">
+          <label>Név<input type="text" name="contact[name]" autocomplete="name" required></label>
+          <label>E-mail-cím<input type="email" name="contact[email]" autocomplete="email" required></label>
+        </div>
+        <label>Telefonszám <span style="font-weight:400;color:#5C534C">(nem kötelező)</span><input type="tel" name="contact[phone]" autocomplete="tel"></label>
+        <label>Üzenet<textarea name="contact[body]" required placeholder="Miben segíthetünk? Ha rendelésről van szó, írd meg a rendelésszámot is."></textarea></label>
+        <p style="font-size:13px;color:#5C534C">Az üzenet elküldésével elfogadod, hogy az adataidat a megkeresésed megválaszolásához kezeljük. <a href="/policies/privacy-policy" style="text-decoration:underline">Adatkezelési tájékoztató</a></p>
+        <button type="submit" class="btn" style="align-self:flex-start">Üzenet küldése</button>
+      {%- endform -%}
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="card" style="gap:18px">
+        <div class="abk-c"><div class="i" aria-hidden="true">☎</div><div><b>Telefon</b><a href="tel:+36307101650">+36 30 710 1650</a><br><span>Hétköznap 8–17</span></div></div>
+        <div class="abk-c"><div class="i" aria-hidden="true">✉</div><div><b>E-mail</b><a href="mailto:info@aerobelle.hu">info@aerobelle.hu</a></div></div>
+        <div class="abk-c"><div class="i" aria-hidden="true">⌂</div><div><b>Cím</b><span>5904 Orosháza, Aranyeső utca 14.</span></div></div>
+        <div style="border-top:1px solid #E3D9D0;padding-top:14px;font-size:13.5px;color:#5C534C;line-height:1.6">Balló Balázs EV · Nyilvántartási szám: 61361359 · Adószám: 79020095-1-24</div>
+      </div>
+      <iframe class="abk-map" title="AeroBelle – térkép" loading="lazy" src="https://www.google.com/maps?q=Orosh%C3%A1za%2C%20Aranyes%C5%91%20utca%2014.&output=embed"></iframe>
+      <a href="/pages/gyik" class="card" style="text-decoration:none;flex-direction:row;align-items:center;justify-content:space-between"><span><b style="font-size:16px">Gyakori kérdések</b><br><span style="font-size:14px;color:#5C534C">Szállítás, garancia, használat – sokszor itt a válasz.</span></span><span aria-hidden="true" style="font-size:22px">→</span></a>
+    </div>
+  </div>
+</div>
+</div>
+{% schema %}
+{ "name": "AeroBelle kapcsolat", "settings": [] }
+{% endschema %}

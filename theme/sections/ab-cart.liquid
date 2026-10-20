@@ -1,0 +1,191 @@
+{%- liquid
+  assign cdn = 'https://cdn.shopify.com/s/files/1/0905/0089/0960/files/'
+  assign has_bundle = false
+  assign has_device = false
+  assign has_warranty = false
+  assign device_line = 0
+  for item in cart.items
+    if item.product.handle == 'aerobelle-bd22-teljes-csomag'
+      assign has_bundle = true
+    elsif item.product.handle == 'aerobelle-bd22'
+      assign has_device = true
+      assign device_line = forloop.index
+    elsif item.product.handle == 'kiterjesztett-garancia'
+      assign has_warranty = true
+    endif
+  endfor
+-%}
+{%- render 'ab-page-style' -%}
+<style>
+.abc{padding-top:32px;padding-bottom:72px}
+.abc-grid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:32px;align-items:start}
+.abc-items{display:flex;flex-direction:column;gap:14px}
+.abc-item{background:#FFFFFF;border-radius:18px;padding:16px;display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:16px;align-items:start}
+.abc-item img{width:96px;height:96px;border-radius:12px;object-fit:cover;display:block;background:#F1EAE3}
+.abc-title{font-weight:700;font-size:16.5px;text-decoration:none;line-height:1.35}
+.abc-sub{font-size:13.5px;color:#5C534C;margin-top:4px;line-height:1.45}
+.abc-incl{list-style:none;margin:8px 0 0;padding:0;font-size:13.5px;color:#4A433E;display:flex;flex-direction:column;gap:3px}
+.abc-price{text-align:right;white-space:nowrap}
+.abc-price b{font-size:17px}
+.abc-price s{display:block;font-size:13px;color:#5C534C}
+.abc-row{display:flex;align-items:center;gap:14px;margin-top:12px;flex-wrap:wrap}
+.abc-qty{display:inline-flex;align-items:center;border:1.5px solid #E3D9D0;border-radius:999px;overflow:hidden;background:#FFFFFF}
+.abc-qty button{width:40px;height:40px;border:0;background:none;font-size:18px;cursor:pointer;color:#2B2B2B}
+.abc-qty span{min-width:28px;text-align:center;font-weight:700}
+.abc-remove{background:none;border:0;padding:6px 0;font-size:13.5px;color:#5C534C;text-decoration:underline;cursor:pointer;font-family:inherit}
+.abc-sum{background:#FFFFFF;border-radius:20px;padding:22px;position:sticky;top:96px;display:flex;flex-direction:column;gap:12px}
+.abc-line{display:flex;justify-content:space-between;gap:12px;font-size:15.5px}
+.abc-total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid #E3D9D0;padding-top:14px;margin-top:4px}
+.abc-total b{font-size:26px}
+.abc-free{color:#2E7D32;font-weight:700}
+.abc-note{font-size:13px;color:#5C534C;line-height:1.5}
+.abc-trust{display:flex;flex-direction:column;gap:8px;font-size:14px;border-top:1px solid #E3D9D0;padding-top:14px}
+.abc-trust div{display:flex;gap:10px;align-items:flex-start}
+.abc-up{background:#2B2B2B;color:#F9F4F0;border-radius:18px;padding:18px;display:flex;gap:16px;align-items:center}
+.abc-up img{width:84px;height:84px;border-radius:12px;object-fit:cover;flex:none}
+.abc-up .btn{min-height:46px;font-size:14px;padding:0 18px;margin-top:10px}
+.abc-warn{background:#FFF3EE;border:2px solid #FE6C3B;border-radius:14px;padding:14px 16px;font-size:14.5px}
+.abc-busy{opacity:.5;pointer-events:none}
+@media (max-width:989px){.abc-grid{grid-template-columns:1fr}.abc-sum{position:static}}
+@media (max-width:560px){.abc-item{grid-template-columns:72px minmax(0,1fr);}.abc-item img{width:72px;height:72px}.abc-price{grid-column:2;text-align:left}.abc-price s{display:inline;margin-left:6px}}
+</style>
+
+<div class="abh">
+<div class="wrap abc" id="abc">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:22px">
+    <h1 style="font-size:clamp(34px,4.6vw,52px)">Kosarad</h1>
+    {%- if cart.item_count > 0 -%}<a href="/products/aerobelle-bd22" style="font-size:15px;font-weight:500">← Vásárlás folytatása</a>{%- endif -%}
+  </div>
+
+  {%- if cart.item_count == 0 -%}
+    <div class="card" style="max-width:640px;padding:32px;gap:16px">
+      <b style="font-size:20px">A kosarad még üres.</b>
+      <p style="font-size:16px;color:#4A433E">Nézd meg a Teljes csomagot: hajformázó, oktatóvideók, 3 e-book és 3 év garancia – 365 napos kipróbálással.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="/products/aerobelle-bd22">A hajformázó →</a><a class="btn" href="/#hajkodex" style="background:transparent;border:1.5px solid #2B2B2B">Hajkódex e-bookok</a></div>
+    </div>
+  {%- else -%}
+  <div class="abc-grid">
+    <div class="abc-items">
+      {%- if has_warranty and has_device == false -%}
+        <div class="abc-warn" data-abc-orphan="1">A kiterjesztett garancia csak a hajformázóval együtt vásárolható, ezért kivettük a kosárból.</div>
+      {%- endif -%}
+
+      {%- for item in cart.items -%}
+        <div class="abc-item" data-line="{{ forloop.index }}" data-handle="{{ item.product.handle }}" data-qty="{{ item.quantity }}">
+          <a href="{{ item.url }}">{%- if item.image -%}<img src="{{ item.image | image_url: width: 240 }}" alt="{{ item.product.title | escape }}" loading="lazy">{%- endif -%}</a>
+          <div>
+            <a class="abc-title" href="{{ item.url }}">{{ item.product.title }}</a>
+            {%- unless item.variant.title == 'Default Title' -%}<div class="abc-sub">{{ item.variant.title }}</div>{%- endunless -%}
+            {%- case item.product.handle -%}
+              {%- when 'aerobelle-bd22-teljes-csomag' -%}
+                <ul class="abc-incl"><li>✓ AeroBelle BD22 + 5 fej</li><li>✓ Dorka oktatóvideói</li><li>✓ 3 Hajkódex e-book</li><li>✓ +1 év kiterjesztett garancia (összesen 3 év)</li><li>✓ Ingyenes szállítás</li></ul>
+              {%- when 'aerobelle-bd22' -%}
+                <div class="abc-sub">5 fej · 2 év jótállás · ingyenes szállítás</div>
+              {%- when 'kiterjesztett-garancia' -%}
+                <div class="abc-sub">+1 év, háztól házig cserével · e-mailben kapod a jótállási jegyet</div>
+              {%- else -%}
+                {%- if item.requires_shipping == false -%}<div class="abc-sub">PDF e-book · azonnal e-mailben</div>{%- endif -%}
+            {%- endcase -%}
+            <div class="abc-row">
+              {%- if item.product.handle == 'kiterjesztett-garancia' or item.requires_shipping == false -%}
+                <span class="abc-sub" style="margin:0">1 db</span>
+              {%- else -%}
+                <div class="abc-qty" role="group" aria-label="Mennyiség"><button type="button" data-abc-q="-1" aria-label="Kevesebb">−</button><span>{{ item.quantity }}</span><button type="button" data-abc-q="1" aria-label="Több">+</button></div>
+              {%- endif -%}
+              <button type="button" class="abc-remove" data-abc-remove>Eltávolítás</button>
+            </div>
+          </div>
+          <div class="abc-price">
+            <b>{{ item.final_line_price | money }}</b>
+            {%- if item.variant.compare_at_price > item.final_price -%}<s>{{ item.variant.compare_at_price | times: item.quantity | money }}</s>{%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+
+      {%- if has_device and has_bundle == false -%}
+        <div class="abc-up">
+          <img src="{{ cdn }}aerobelle-csomag-flatlay.jpg?width=200" alt="" loading="lazy">
+          <div>
+            <b style="font-size:16.5px">Váltasz a Teljes csomagra?</b>
+            <div style="font-size:14px;color:#CFC6BE;margin-top:4px">45 990 Ft – olcsóbb, mint a gép egyedül, és benne van az oktatás, a 3 e-book és a 3 év garancia is.</div>
+            <button type="button" class="btn" data-abc-swap="{{ device_line }}">Csomagra cserélem</button>
+          </div>
+        </div>
+      {%- elsif has_bundle == false and has_device == false -%}
+        <div class="abc-up">
+          <img src="{{ cdn }}aerobelle-csomag-flatlay.jpg?width=200" alt="" loading="lazy">
+          <div>
+            <b style="font-size:16.5px">A hajformázó Teljes csomagjában mindhárom e-book ajándék</b>
+            <div style="font-size:14px;color:#CFC6BE;margin-top:4px">BD22 + oktatóvideók + 3 e-book + 3 év garancia, 45 990 Ft.</div>
+            <a class="btn" href="/products/aerobelle-bd22">Megnézem</a>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <aside class="abc-sum" aria-label="Rendelés összesítő">
+      <b style="font-size:20px">Összesítő</b>
+      <div class="abc-line"><span>Termékek ({{ cart.item_count }} db)</span><span>{{ cart.items_subtotal_price | money }}</span></div>
+      {%- if cart.cart_level_discount_applications.size > 0 -%}
+        {%- for d in cart.cart_level_discount_applications -%}<div class="abc-line"><span>{{ d.title }}</span><span>−{{ d.total_allocated_amount | money }}</span></div>{%- endfor -%}
+      {%- endif -%}
+      <div class="abc-line"><span>Szállítás</span><span class="abc-free">Ingyenes</span></div>
+      <div class="abc-line"><span>Utánvét</span><span class="abc-free">Díjmentes</span></div>
+      <div class="abc-total"><span style="font-weight:700">Fizetendő</span><b>{{ cart.total_price | money }}</b></div>
+      <div class="abc-note">Az árak az ÁFA-t tartalmazzák. A szállítási módot (házhoz, PostaPont, csomagautomata) a következő lépésben választod ki.</div>
+      <form action="{{ routes.cart_url }}" method="post">
+        <button type="submit" name="checkout" class="btn" style="width:100%;min-height:60px;font-size:17px">Tovább a pénztárhoz →</button>
+      </form>
+      <div class="abc-note" style="text-align:center">Kártya · Apple Pay · Google Pay · PayPal · utánvét</div>
+      <div class="abc-trust">
+        <div><span aria-hidden="true">↺</span><span><b>365 nap kipróbálás</b> – a visszaküldést is mi álljuk</span></div>
+        <div><span aria-hidden="true">✓</span><span><b>2 év jótállás</b>, 3 évre bővíthető, háztól házig cserével</span></div>
+        <div><span aria-hidden="true">☎</span><span><b>Kérdésed van?</b> <a href="tel:+36307101650">+36 30 710 1650</a> · hétköznap 8–17</span></div>
+      </div>
+      {%- for block in section.blocks -%}{%- if block.type == '@app' -%}<div {{ block.shopify_attributes }}>{% render block %}</div>{%- endif -%}{%- endfor -%}
+    </aside>
+  </div>
+  {%- endif -%}
+</div>
+</div>
+
+<script>
+(function () {
+  var root = document.getElementById('abc'); if (!root) return;
+  var BUNDLE = 53835565072720;
+  function busy() { root.classList.add('abc-busy'); }
+  function post(url, data) { return fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) }); }
+  function change(line, qty) { busy(); return post('/cart/change.js', { line: line, quantity: qty }).then(function () { location.reload(); }); }
+  root.addEventListener('click', function (e) {
+    var t = e.target.closest('button'); if (!t) return;
+    var row = t.closest('.abc-item');
+    if (t.hasAttribute('data-abc-q') && row) { change(parseInt(row.dataset.line, 10), Math.max(0, parseInt(row.dataset.qty, 10) + parseInt(t.getAttribute('data-abc-q'), 10))); }
+    else if (t.hasAttribute('data-abc-remove') && row) {
+      var line = parseInt(row.dataset.line, 10);
+      if (row.dataset.handle === 'aerobelle-bd22') {
+        var w = root.querySelector('.abc-item[data-handle="kiterjesztett-garancia"]');
+        busy();
+        var p = post('/cart/change.js', { line: line, quantity: 0 });
+        if (w) { p = p.then(function () { return fetch('/cart.js').then(function (r) { return r.json(); }).then(function (c) { var u = {}; c.items.forEach(function (i) { if (i.handle === 'kiterjesztett-garancia') u[i.key] = 0; }); return post('/cart/update.js', { updates: u }); }); }); }
+        p.then(function () { location.reload(); });
+      } else { change(line, 0); }
+    }
+    else if (t.hasAttribute('data-abc-swap')) {
+      busy();
+      fetch('/cart.js').then(function (r) { return r.json(); }).then(function (c) {
+        var u = {}; c.items.forEach(function (i) { if (i.handle === 'aerobelle-bd22' || i.handle === 'kiterjesztett-garancia' || /hajkodex-/.test(i.handle)) u[i.key] = 0; });
+        return post('/cart/update.js', { updates: u });
+      }).then(function () { return post('/cart/add.js', { items: [ { id: BUNDLE, quantity: 1 } ] }); }).then(function () { location.reload(); });
+    }
+  });
+  if (root.querySelector('[data-abc-orphan]')) {
+    fetch('/cart.js').then(function (r) { return r.json(); }).then(function (c) {
+      var u = {}; c.items.forEach(function (i) { if (i.handle === 'kiterjesztett-garancia') u[i.key] = 0; });
+      return post('/cart/update.js', { updates: u });
+    }).then(function () { setTimeout(function () { location.reload(); }, 1500); });
+  }
+})();
+</script>
+{% schema %}
+{ "name": "AeroBelle kosár", "settings": [], "blocks": [ { "type": "@app" } ] }
+{% endschema %}
