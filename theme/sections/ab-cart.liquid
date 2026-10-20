@@ -4,9 +4,11 @@
   assign has_device = false
   assign has_warranty = false
   assign device_line = 0
+  assign bundle_qty = 0
   for item in cart.items
     if item.product.handle == 'aerobelle-bd22-teljes-csomag'
       assign has_bundle = true
+      assign bundle_qty = bundle_qty | plus: item.quantity
     elsif item.product.handle == 'aerobelle-bd22'
       assign has_device = true
       assign device_line = forloop.index
@@ -28,6 +30,7 @@
 .abc-price{text-align:right;white-space:nowrap}
 .abc-price b{font-size:17px}
 .abc-price s{display:block;font-size:13px;color:#5C534C}
+.abc-save{display:block;font-size:13px;font-weight:700;color:#2E7D32}
 .abc-row{display:flex;align-items:center;gap:14px;margin-top:12px;flex-wrap:wrap}
 .abc-qty{display:inline-flex;align-items:center;border:1.5px solid #E3D9D0;border-radius:999px;overflow:hidden;background:#FFFFFF}
 .abc-qty button{width:40px;height:40px;border:0;background:none;font-size:18px;cursor:pointer;color:#2B2B2B}
@@ -48,7 +51,7 @@
 .abc-ship{border-top:1px solid #E3D9D0;padding-top:14px}.abc-ship h2,.abc-ship h3,.abc-ship h4{display:none !important}.abc-ship .shopify-app-block{margin-top:10px}
 .abc-busy{opacity:.5;pointer-events:none}
 @media (max-width:989px){.abc-grid{grid-template-columns:1fr}.abc-sum{position:static}}
-@media (max-width:560px){.abc-item{grid-template-columns:72px minmax(0,1fr);}.abc-item img{width:72px;height:72px}.abc-price{grid-column:2;text-align:left}.abc-price s{display:inline;margin-left:6px}}
+@media (max-width:560px){.abc-item{grid-template-columns:72px minmax(0,1fr);}.abc-item img{width:72px;height:72px}.abc-price{grid-column:2;text-align:left}.abc-price s,.abc-price .abc-save{display:inline;margin-left:6px}}
 </style>
 
 <div class="abh">
@@ -108,7 +111,9 @@
           </div>
           <div class="abc-price">
             <b>{{ item.final_line_price | money }}</b>
-            {%- if item.variant.compare_at_price > item.final_price -%}<s>{{ item.variant.compare_at_price | times: item.quantity | money }}</s>{%- endif -%}
+            {%- if item.product.handle == 'aerobelle-bd22-teljes-csomag' -%}
+              <s>{{ 7086000 | times: item.quantity | money }}</s><span class="abc-save">−{{ 2487000 | times: item.quantity | money }}</span>
+            {%- elsif item.variant.compare_at_price > item.final_price -%}<s>{{ item.variant.compare_at_price | times: item.quantity | money }}</s>{%- endif -%}
           </div>
         </div>
       {%- endfor -%}
@@ -140,6 +145,7 @@
       {%- if cart.cart_level_discount_applications.size > 0 -%}
         {%- for d in cart.cart_level_discount_applications -%}<div class="abc-line"><span>{{ d.title }}</span><span>−{{ d.total_allocated_amount | money }}</span></div>{%- endfor -%}
       {%- endif -%}
+      {%- if bundle_qty > 0 -%}<div class="abc-line"><span>Megtakarításod a csomaggal<br><span class="abc-note">külön megvéve {{ 7086000 | times: bundle_qty | money }} lenne</span></span><span class="abc-free" style="white-space:nowrap">−{{ 2487000 | times: bundle_qty | money }}</span></div>{%- endif -%}
       <div class="abc-line"><span>Szállítás</span><span class="abc-free">Ingyenes</span></div>
       <div class="abc-line"><span>Utánvét</span><span class="abc-free">Díjmentes</span></div>
       <div class="abc-total"><span style="font-weight:700">Fizetendő</span><b>{{ cart.total_price | money }}</b></div>
