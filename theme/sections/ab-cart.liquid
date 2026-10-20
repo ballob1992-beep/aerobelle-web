@@ -145,10 +145,10 @@
       {%- if cart.cart_level_discount_applications.size > 0 -%}
         {%- for d in cart.cart_level_discount_applications -%}<div class="abc-line"><span>{{ d.title }}</span><span>−{{ d.total_allocated_amount | money }}</span></div>{%- endfor -%}
       {%- endif -%}
-      {%- if bundle_qty > 0 -%}<div class="abc-line"><span>Megtakarításod a csomaggal<br><span class="abc-note">külön megvéve {{ 7086000 | times: bundle_qty | money }} lenne</span></span><span class="abc-free" style="white-space:nowrap">−{{ 2487000 | times: bundle_qty | money }}</span></div>{%- endif -%}
       <div class="abc-line"><span>Szállítás</span><span class="abc-free">Ingyenes</span></div>
       <div class="abc-line"><span>Utánvét</span><span class="abc-free">Díjmentes</span></div>
       <div class="abc-total"><span style="font-weight:700">Fizetendő</span><b>{{ cart.total_price | money }}</b></div>
+      {%- if bundle_qty > 0 -%}<div style="background:#EAF5EA;border-radius:12px;padding:10px 12px;font-size:14px;line-height:1.45"><b style="color:#2E7D32">{{ 2487000 | times: bundle_qty | money }}-ot spórolsz a csomaggal.</b><br><span style="color:#4A433E">Külön megvéve a tartalma {{ 7086000 | times: bundle_qty | money }} lenne.</span></div>{%- endif -%}
       <div class="abc-note">A feltüntetett árak végső árak, további költség nincs.</div>
       {%- if cart.requires_shipping -%}
       <div class="abc-ship"><b style="font-size:16px">Szállítási mód</b><div class="abc-note" style="margin-top:2px">PostaPonthoz vagy csomagautomatához itt válaszd ki az átvételi helyet; házhozszállításnál a címet a pénztárban adod meg.</div>
