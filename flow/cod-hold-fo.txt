@@ -1,0 +1,1 @@
+{% assign held = "" %}{% for fo in order.fulfillmentOrders %}{% if held == "" and fo.deliveryMethod.methodType == "SHIPPING" %}{% assign held = fo.id %}{% endif %}{% endfor %}{% if held == "" %}{% for fo in order.fulfillmentOrders %}{% if forloop.first %}{% assign held = fo.id %}{% endif %}{% endfor %}{% endif %}{{ held }}
