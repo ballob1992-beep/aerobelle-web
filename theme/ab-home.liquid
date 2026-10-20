@@ -1,0 +1,244 @@
+{%- liquid
+  assign cdn = 'https://cdn.shopify.com/s/files/1/0905/0089/0960/files/'
+  assign bundle_url = '/cart/add?id=53835565072720&quantity=1'
+-%}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+.abh{font-family:'Space Grotesk',system-ui,sans-serif;color:#2B2B2B;background:#F9F4F0;line-height:1.5}
+.abh *{box-sizing:border-box}
+.abh a{color:#2B2B2B}
+.abh h1,.abh h2,.abh h3{font-family:'Anton',Impact,sans-serif !important;font-weight:400 !important;text-transform:uppercase !important;letter-spacing:.3px !important;margin:0 !important;line-height:1.04 !important;color:inherit !important}
+.abh p{margin:0}
+.abh .wrap{max-width:1200px;margin:0 auto;padding-left:20px;padding-right:20px}
+.abh .btn{display:inline-flex;align-items:center;justify-content:center;min-height:58px;padding:0 32px;border-radius:999px;background:#FE6C3B;color:#2B2B2B !important;font-weight:700;font-size:16px;letter-spacing:.3px;text-transform:uppercase;text-decoration:none;border:0;font-family:inherit;cursor:pointer;text-align:center}
+.abh .btn:hover{background:#FF8A5E}
+.abh .eyebrow{font-size:13px;font-weight:700;letter-spacing:1.6px;color:#B8461F;text-transform:uppercase}
+.abh .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:48px;align-items:center}
+.abh .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px}
+.abh .grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:18px}
+.abh .sec{padding-top:72px;padding-bottom:72px}
+.abh .h-xl{font-size:clamp(38px,6vw,60px)}
+.abh .h-l{font-size:clamp(32px,4.5vw,50px)}
+.abh .mono{flex:none;width:44px;height:44px;border-radius:50%;background:#2B2B2B;color:#F9F4F0;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.abh .stars{color:#FE6C3B;letter-spacing:1px}
+.abh .card{background:#FFFFFF;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.abh .ba{position:relative}.abh .ba img{width:100%;height:300px;object-fit:cover;display:block}
+.abh .tag{position:absolute;left:10px;top:10px;font-size:11px;font-weight:700;padding:4px 8px;border-radius:6px}
+.abh details{border-bottom:1px solid #E3D9D0}
+.abh summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:62px;font-weight:700;font-size:17px}
+.abh summary::-webkit-details-marker{display:none}
+.abh details[open] summary .pm{transform:rotate(45deg)}
+.abh .pm{transition:transform .2s;font-size:22px;line-height:1}
+.abh details p{margin:0 0 18px;line-height:1.55}
+.abh video{background:#000;display:block;width:100%}
+.abh .cmp td,.abh .cmp th{padding:13px 12px;text-align:left;vertical-align:top}
+.abh .cmp tr+tr{border-top:1px solid #4A4A4A}
+.abh .cmp .me{background:rgba(254,108,59,.16)}
+.abh .offer li{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid #EFE7E0;padding-bottom:10px}
+.abh .offer li:last-child{border-bottom:0}
+.abh input[type=email]{flex:1 1 240px;height:58px;border-radius:999px;border:1.5px solid #2B2B2B;padding:0 22px;font-size:16px;font-family:inherit;background:#FFFFFF;color:#2B2B2B}
+@media (max-width:749px){.abh .sec{padding-top:52px;padding-bottom:52px}.abh .ba img{height:220px}.abh .hide-m{display:none}}
+</style>
+
+<div class="abh">
+
+{%- comment -%} 1. HERO {%- endcomment -%}
+<section class="wrap" style="padding-top:40px;padding-bottom:56px">
+  <div class="grid2">
+    <div style="display:flex;flex-direction:column;gap:20px;align-items:flex-start">
+      <h1 class="h-xl">Úgy néz ki, mintha szalonból jöttél volna. <span style="color:#FE6C3B">Pedig csak a fürdőszobából.</span></h1>
+      <p style="font-size:19px;max-width:520px">Az AeroBelle BD22 egyszerre szárít és formáz: egy gép, 5 cserélhető fej, legfeljebb 120 °C – kíméletesen a hajadhoz.</p>
+      <div style="display:flex;gap:12px;align-items:center">
+        <img src="{{ cdn }}anita.png" alt="Góg-Fehér Anita" width="44" height="44" style="width:44px;height:44px;border-radius:50%;object-fit:cover;flex:none">
+        <div style="font-size:15px;line-height:1.4"><span class="stars">★★★★★</span> „A formázás tartós volt, nap végére sem esett szét.”<br><span style="color:#5C534C;font-size:14px">Góg-Fehér Anita, fodrász</span></div>
+      </div>
+      <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap"><span style="font-size:22px;color:#5C534C;text-decoration:line-through">51 900 Ft</span><span style="font-size:40px;font-weight:700">45 990 Ft</span></div>
+      <p style="margin-top:-10px;font-size:15px">+ ajándék oktatóvideók, 3 e-book és +1 év garancia</p>
+      <a class="btn" href="{{ bundle_url }}">Kérem a teljes csomagot →</a>
+      <p style="margin-top:-8px;font-size:14px;color:#5C534C">Utánvéttel is fizethetsz · Magyar cég, Orosháza</p>
+    </div>
+    <div style="position:relative;aspect-ratio:1/1;border-radius:24px;overflow:hidden;background:#2B2B2B">
+      <video src="https://cdn.shopify.com/videos/c/vp/25bb0ae4e8d5447299b322e76dc6f800/25bb0ae4e8d5447299b322e76dc6f800.HD-720p-1.6Mbps-97110614.mp4" poster="{{ cdn }}02_hero_dorka_kis_kor.jpg" autoplay muted loop playsinline style="height:100%;object-fit:cover"></video>
+      <div style="position:absolute;left:16px;bottom:16px;display:flex;align-items:center;gap:8px;background:rgba(43,43,43,.85);color:#F9F4F0;padding:6px 14px 6px 6px;border-radius:999px;font-size:14px;font-weight:500"><img src="{{ cdn }}aerobelle-lp3-hero-dorka.jpg" alt="" width="32" height="32" style="width:32px;height:32px;border-radius:50%;object-fit:cover">Dorka, fodrász · valódi felvétel</div>
+    </div>
+  </div>
+</section>
+
+{%- comment -%} 2. BIZALOM {%- endcomment -%}
+<section style="border-top:1px solid #E3D9D0;border-bottom:1px solid #E3D9D0;background:#FFFFFF">
+  <div class="wrap grid4" style="padding-top:20px;padding-bottom:20px;font-size:15px;font-weight:500">
+    <div style="display:flex;gap:12px;align-items:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v4h4"/></svg>365 nap kipróbálás, a visszaküldést is mi álljuk</div>
+    <div style="display:flex;gap:12px;align-items:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg>Ingyenes szállítás, általában 2 munkanap</div>
+    <div style="display:flex;gap:12px;align-items:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6l8-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>2 év jótállás, 3 évre bővíthető</div>
+    <div style="display:flex;gap:12px;align-items:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg>Magyar ügyfélszolgálat</div>
+  </div>
+</section>
+
+{%- comment -%} 3. SZÖVEGES VÉLEMÉNYEK {%- endcomment -%}
+<section class="wrap" style="padding-top:72px;padding-bottom:24px">
+  <div class="eyebrow" style="margin-bottom:10px">Valódi vásárlók</div>
+  <h2 class="h-l" style="margin-bottom:28px !important">Akik már használják</h2>
+  <div class="grid3">
+    <div class="card"><span class="stars" style="font-size:18px">★★★★★</span><p style="font-size:17px;line-height:1.55;flex:1">„Elfoglalt cégvezetőként és anyaként számomra különösen fontos a hatékonyság. A használata gyors és egyszerű, a végeredmény pedig lenyűgöző.”</p><div style="display:flex;gap:12px;align-items:center"><img src="{{ cdn }}aerobelle-bordas-maria.jpg" alt="Bordás Mária" width="44" height="44" style="width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:50% 20%;flex:none"><div style="font-size:14.5px"><b>Bordás Mária</b><br><span style="color:#5C534C">Cégvezető, anya</span></div></div></div>
+    <div class="card"><span class="stars" style="font-size:18px">★★★★★</span><p style="font-size:17px;line-height:1.55;flex:1">„Masszív, jó minőségű, használat közben stabil. Könnyen lehet vele göndöríteni.”</p><div style="display:flex;gap:12px;align-items:center"><span class="mono">JR</span><div style="font-size:14.5px"><b>Juhász Réka</b><br><span style="color:#5C534C">Vásárló</span></div></div></div>
+    <div class="card"><span class="stars" style="font-size:18px">★★★★★</span><p style="font-size:17px;line-height:1.55;flex:1">„Pillanatok alatt készít magának menő frizurát a kislányom, mert szinte gyerekjáték kezelni.”</p><div style="display:flex;gap:12px;align-items:center"><span class="mono">FV</span><div style="font-size:14.5px"><b>Faragó Vanda</b><br><span style="color:#5C534C">Négygyermekes anyuka</span></div></div></div>
+  </div>
+</section>
+
+{%- comment -%} 4. HOGYAN MŰKÖDIK {%- endcomment -%}
+<section style="background:#FFFFFF;margin-top:56px">
+  <div class="wrap sec grid2">
+    <div style="position:relative;aspect-ratio:9/16;max-height:640px;border-radius:22px;overflow:hidden;background:#2B2B2B;max-width:360px;width:100%;justify-self:center">
+      <video src="https://cdn.shopify.com/videos/c/vp/3db7baaad9fc4521bd6a63b7d8f7f190/3db7baaad9fc4521bd6a63b7d8f7f190.HD-720p-1.6Mbps-97290189.mp4" poster="{{ cdn }}05_fejek_video_boritokep.jpg" autoplay muted loop playsinline style="height:100%;object-fit:cover"></video>
+      <span style="position:absolute;left:14px;top:14px;background:#FE6C3B;font-size:12.5px;font-weight:700;padding:6px 12px;border-radius:999px">Fodrász kezében</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <div class="eyebrow">Hogyan működik</div>
+      <h2 class="h-l">Egy gép. Öt fej. Minden frizurához.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:14px">
+        <div style="background:#F9F4F0;border-radius:16px;padding:18px;display:flex;gap:12px"><img src="{{ cdn }}05a_szaritofej.jpg" alt="" width="64" height="64" style="width:64px;height:64px;border-radius:10px;object-fit:cover;flex:none"><div><b style="font-size:17px">Szárítófej</b><div style="font-size:15px;margin-top:6px;color:#4A433E">Gyors előszárítás, minden frizura első lépése.</div></div></div>
+        <div style="background:#F9F4F0;border-radius:16px;padding:18px;display:flex;gap:12px"><img src="{{ cdn }}05b_korkefe.jpg" alt="" width="64" height="64" style="width:64px;height:64px;border-radius:10px;object-fit:cover;flex:none"><div><b style="font-size:17px">Körkefe</b><div style="font-size:15px;margin-top:6px;color:#4A433E">Ovális dúsító kefe: volumen és lendület a tövektől.</div></div></div>
+        <div style="background:#F9F4F0;border-radius:16px;padding:18px;display:flex;gap:12px"><img src="{{ cdn }}05c_laposkefe.jpg" alt="" width="64" height="64" style="width:64px;height:64px;border-radius:10px;object-fit:cover;flex:none"><div><b style="font-size:17px">Laposkefe</b><div style="font-size:15px;margin-top:6px;color:#4A433E">Sima, fényes, szöszmentes haj, vasaló nélkül.</div></div></div>
+        <div style="background:#F9F4F0;border-radius:16px;padding:18px;display:flex;gap:12px"><img src="{{ cdn }}05d_gondorito_balra.jpg" alt="" width="64" height="64" style="width:64px;height:64px;border-radius:10px;object-fit:cover;flex:none"><div><b style="font-size:17px">2 göndörítő fej</b><div style="font-size:15px;margin-top:6px;color:#4A433E">Balra és jobbra: a tincs rátekeredik, te csak tartod.</div></div></div>
+      </div>
+      <p style="font-size:15px;color:#4A433E">3 meleg hőfok, hideg levegő a frizura rögzítéséhez és 3 sebességi fokozat.</p>
+      <a href="/products/aerobelle-bd22" style="font-weight:700;font-size:16px">A hajformázó részletesen →</a>
+    </div>
+  </div>
+</section>
+
+{%- comment -%} 5. FEKETE TIBOR {%- endcomment -%}
+<section style="background:#2B2B2B;color:#F9F4F0">
+  <div class="wrap sec ft-grid" style="display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:56px;align-items:center">
+    <video src="{{ cdn }}aerobelle-fekete-tibor-bemutato-modellen.mp4" poster="{{ cdn }}aerobelle-fekete-tibor-bemutato-modellen-poster.jpg" controls playsinline preload="none" style="aspect-ratio:9/16;max-width:360px;justify-self:center;object-fit:cover;border-radius:18px"></video>
+    <div style="display:flex;flex-direction:column;gap:18px;min-width:0">
+      <div class="eyebrow" style="color:#FE6C3B">Mesterfodrász szemmel</div>
+      <h2 class="h-l">Fekete Tibor kipróbálta. Modellen.</h2>
+      <p style="font-size:18px;line-height:1.55;color:#E8E0D8;max-width:560px">Hajgyógyász és mesterfodrász – a saját szalonjában, egy modell haján mutatja meg, mit tud az AeroBelle: szárítás, simítás, volumen, fürtök. Mellette elmondja a véleményét is.</p>
+      <video src="{{ cdn }}aerobelle-fekete-tibor-ajanlo.mp4" poster="{{ cdn }}aerobelle-fekete-tibor-ajanlo-poster.jpg" controls playsinline preload="none" style="max-width:620px;aspect-ratio:16/9;object-fit:cover;border-radius:14px"></video>
+      <div style="font-size:14px;color:#CFC6BE">Bemutató modellen · Tibor véleménye</div>
+    </div>
+  </div>
+  <style>@media (max-width:749px){.abh .ft-grid{grid-template-columns:1fr !important;gap:32px !important}}</style>
+</section>
+
+{%- comment -%} 6. ELŐTTE / UTÁNA {%- endcomment -%}
+<section class="wrap sec">
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:28px">
+    <div><div class="eyebrow" style="margin-bottom:10px">Dorka eredményei</div><h2 class="h-l">Előtte. Utána.</h2></div>
+    <p style="max-width:420px;font-size:16px">Dorka minden nap vendégek haján dolgozik. Ezeket az eredményeket az AeroBelle-lel készítette, vizes hajból indulva.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:24px">
+    <figure style="margin:0"><div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;border-radius:18px;overflow:hidden"><div class="ba"><img src="{{ cdn }}aerobelle-lp3-volumen-elotte.jpg" alt="Előtte: vizes haj" loading="lazy"><span class="tag" style="background:#2B2B2B;color:#F9F4F0">ELŐTTE</span></div><div class="ba"><img src="{{ cdn }}aerobelle-lp3-volumen-utana.jpg" alt="Utána: dús, volumenes haj" loading="lazy"><span class="tag" style="background:#FE6C3B">UTÁNA</span></div></div><figcaption style="font-weight:700;margin-top:10px">Volumen · körkefe</figcaption></figure>
+    <figure style="margin:0"><div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;border-radius:18px;overflow:hidden"><div class="ba"><img src="{{ cdn }}aerobelle-lp3-furtok-elotte.jpg" alt="Előtte: vizes haj" loading="lazy"><span class="tag" style="background:#2B2B2B;color:#F9F4F0">ELŐTTE</span></div><div class="ba"><img src="{{ cdn }}aerobelle-lp3-furtok-utana.jpg" alt="Utána: kész fürtök" loading="lazy"><span class="tag" style="background:#FE6C3B">UTÁNA</span></div></div><figcaption style="font-weight:700;margin-top:10px">Fürtök · göndörítő fejek</figcaption></figure>
+    <figure style="margin:0"><div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;border-radius:18px;overflow:hidden"><div class="ba"><img src="{{ cdn }}aerobelle-lp3-egyenes-elotte.jpg" alt="Előtte: vizes haj" loading="lazy"><span class="tag" style="background:#2B2B2B;color:#F9F4F0">ELŐTTE</span></div><div class="ba"><img src="{{ cdn }}aerobelle-lp3-egyenes-utana.jpg" alt="Utána: egyenes, fényes haj" loading="lazy"><span class="tag" style="background:#FE6C3B">UTÁNA</span></div></div><figcaption style="font-weight:700;margin-top:10px">Sima, fényes haj · laposkefe</figcaption></figure>
+  </div>
+</section>
+
+{%- comment -%} 7. ÖSSZEHASONLÍTÁS {%- endcomment -%}
+<section style="background:#2B2B2B;color:#F9F4F0">
+  <div class="wrap sec grid2">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <h2 style="font-size:clamp(30px,4vw,46px)">„A neten van ilyen olcsóbban is.” Van. <span style="color:#FE6C3B">Megmutatjuk a különbséget.</span></h2>
+      <p style="font-size:17px;line-height:1.55;color:#E8E0D8">Kefe nélküli, nagy fordulatszámú motor, kerámia bevonat és hőszabályozás – a prémium gépek árának töredékéért. Mellé 365 nap, hogy kipróbáld, és magyar ügyfélszolgálat, ha kérdésed van.</p>
+    </div>
+    <div style="overflow-x:auto;border-radius:18px;background:#3A3A3A">
+      <table class="cmp" style="width:100%;border-collapse:collapse;font-size:15px;min-width:520px;color:#F9F4F0">
+        <thead><tr><th style="padding-left:20px"></th><th style="font-weight:500;color:#CFC6BE">Olcsó no-name</th><th style="background:#FE6C3B;color:#2B2B2B;font-weight:700">AeroBelle</th><th style="font-weight:500;color:#CFC6BE;padding-right:20px">Prémium márkák</th></tr></thead>
+        <tbody>
+          <tr><td style="padding-left:20px;color:#CFC6BE">Ár</td><td>kb. 5–15 000 Ft</td><td class="me" style="font-weight:700">45 990 Ft</td><td style="padding-right:20px">Többszörös ár</td></tr>
+          <tr><td style="padding-left:20px;color:#CFC6BE">Motor</td><td>Általában nincs megadva</td><td class="me">BLDC, 110 000/perc</td><td style="padding-right:20px">Nagy fordulatszámú</td></tr>
+          <tr><td style="padding-left:20px;color:#CFC6BE">Hővédelem</td><td>Ritkán dokumentált</td><td class="me">Kerámia + hőszabályozás</td><td style="padding-right:20px">Van</td></tr>
+          <tr><td style="padding-left:20px;color:#CFC6BE">Kipróbálás</td><td>14 nap</td><td class="me">365 nap</td><td style="padding-right:20px">Általában 14–30 nap</td></tr>
+          <tr><td style="padding-left:20px;color:#CFC6BE">Hiba esetén</td><td>Visszaküldöd, vársz</td><td class="me">Háztól házig csere</td><td style="padding-right:20px">Szervizbe küldöd</td></tr>
+          <tr><td style="padding-left:20px;color:#CFC6BE">Ügyfélszolgálat</td><td>Gyakran nincs magyar</td><td class="me">Magyar, telefonon</td><td style="padding-right:20px">Márkaszerviz</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+{%- comment -%} 8. VIDEÓS VÉLEMÉNYEK {%- endcomment -%}
+<section class="wrap sec">
+  <div class="eyebrow" style="margin-bottom:10px">Nem mi mondjuk</div>
+  <h2 class="h-l" style="margin-bottom:28px !important">Ők.</h2>
+  <div class="grid4">
+    <figure style="margin:0"><video src="{{ cdn }}aerobelle-velemeny-matovic-mana.mp4" poster="{{ cdn }}aerobelle-velemeny-matovic-mana-poster.jpg" controls preload="none" playsinline style="aspect-ratio:9/16;object-fit:cover;border-radius:16px"></video><figcaption style="font-size:14px;margin-top:8px"><b>Matovic Mana</b> · kicsomagolás</figcaption></figure>
+    <figure style="margin:0"><video src="{{ cdn }}aerobelle-velemeny-zsindely-zsanna.mp4" poster="{{ cdn }}aerobelle-velemeny-zsindely-zsanna-poster.jpg" controls preload="none" playsinline style="aspect-ratio:9/16;object-fit:cover;border-radius:16px"></video><figcaption style="font-size:14px;margin-top:8px"><b>Zsindely Zsanna</b> · formázás</figcaption></figure>
+    <figure style="margin:0"><video src="{{ cdn }}aerobelle-velemeny-farago-vanda.mp4" poster="{{ cdn }}aerobelle-velemeny-farago-vanda-poster.jpg" controls preload="none" playsinline style="aspect-ratio:9/16;object-fit:cover;border-radius:16px"></video><figcaption style="font-size:14px;margin-top:8px"><b>Faragó Vanda</b> · otthon</figcaption></figure>
+    <figure style="margin:0"><video src="{{ cdn }}aerobelle-velemeny-birki-erika.mp4" poster="{{ cdn }}aerobelle-velemeny-birki-erika-poster.jpg" controls preload="none" playsinline style="aspect-ratio:9/16;object-fit:cover;border-radius:16px"></video><figcaption style="font-size:14px;margin-top:8px"><b>Birki Erika</b> · vélemény</figcaption></figure>
+  </div>
+  <p style="margin-top:20px;font-size:13px;color:#5C534C">A véleményeket vásárlóinktól és partnereinktől kértük, szövegüket nem változtattuk meg.</p>
+</section>
+
+{%- comment -%} 9. AJÁNLAT {%- endcomment -%}
+<section id="ajanlat" style="background:#FFFFFF">
+  <div class="wrap sec grid2">
+    <div style="position:relative"><img src="{{ cdn }}aerobelle-csomag-flatlay.jpg" alt="Az AeroBelle BD22 teljes csomag" loading="lazy" style="width:100%;height:440px;object-fit:cover;border-radius:22px;display:block"><span style="position:absolute;right:18px;top:18px;width:120px;height:120px;border-radius:50%;background:#FE6C3B;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Anton',Impact,sans-serif;font-size:20px;line-height:1.1;transform:rotate(-8deg)">+ 3<br>AJÁNDÉK</span></div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="eyebrow">A teljes csomag</div>
+      <h2 style="font-size:clamp(30px,4vw,44px)">Nem csak egy hajformázót kapsz. Hanem mindent, ami mellé kell.</h2>
+      <ul class="offer" style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px;font-size:16px">
+        <li><span><b>AeroBelle BD22</b> – alapgép + 5 fej</span><span style="white-space:nowrap"><s style="color:#5C534C">51 900</s> <b>45 990 Ft</b></span></li>
+        <li><span><b>Oktatóvideók fodrásztól</b> – Dorka lépésről lépésre</span><b style="color:#B8461F">INGYEN</b></li>
+        <li><span><b>3 Hajkódex e-book</b> – Hajmítoszok · Hajpszichológia · Hajkultúra <span style="color:#5C534C">(3 × 2 990 Ft)</span></span><b style="color:#B8461F">INGYEN</b></li>
+        <li><span><b>Kiterjesztett garancia +1 év</b> – összesen 3 év <span style="color:#5C534C">(9 990 Ft)</span></span><b style="color:#B8461F">INGYEN</b></li>
+        <li><span><b>Ingyenes házhozszállítás</b> – általában 2 munkanap</span><b style="color:#B8461F">INGYEN</b></li>
+      </ul>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;margin-top:8px"><a class="btn" href="{{ bundle_url }}">Kérem a teljes csomagot →</a><span style="font-size:14px;color:#5C534C">Napi 126 Ft az első évben</span></div>
+    </div>
+  </div>
+</section>
+
+{%- comment -%} 10. HAJAKADÉMIA – 3 VIDEÓ E-MAILBEN {%- endcomment -%}
+<section id="akademia" class="wrap sec grid2" style="gap:56px">
+  <img src="{{ cdn }}aerobelle-lp3-hero-dorka.jpg" alt="Dorka, fodrász" loading="lazy" style="width:100%;height:480px;object-fit:cover;border-radius:24px;display:block">
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <div class="eyebrow">Hajakadémia · Dorka, fodrász · Együttműködő partner</div>
+    <h2 style="font-size:clamp(30px,4vw,48px)">Még gondolkodsz? Kérd el ingyen a 3 oktatóvideót.</h2>
+    <p style="font-size:18px;line-height:1.55">Volumen, fürtök, sima haj – lépésről lépésre, e-mailben, pár percen belül. <a href="https://www.instagram.com/hair_palace_dorka/" target="_blank" rel="noopener">@hair_palace_dorka</a></p>
+    {%- form 'customer', id: 'ab-home-lead', style: 'display:flex;flex-direction:column;gap:12px;max-width:540px' -%}
+      <input type="hidden" name="contact[tags]" value="lp3, oktatovideo, newsletter, fooldal">
+      {%- if form.posted_successfully? -%}
+        <p style="background:#FFFFFF;border-radius:14px;padding:16px;font-weight:700">Köszönjük! Pár percen belül küldjük az első videót – nézd meg a Promóciók mappát is.</p>
+      {%- else -%}
+        {%- if form.errors -%}<p style="color:#B8461F;font-weight:700">Ezzel az e-mail-címmel valami nem stimmel, kérjük, ellenőrizd.</p>{%- endif -%}
+        <label for="ab-home-email" style="font-size:14px;font-weight:500">E-mail-címed</label>
+        <div style="display:flex;flex-wrap:wrap;gap:10px"><input id="ab-home-email" type="email" name="contact[email]" required autocomplete="email" placeholder="nev@pelda.hu"><button type="submit" class="btn" style="background:#2B2B2B;color:#F9F4F0 !important">Kérem a 3 videót</button></div>
+        <label style="display:flex;gap:10px;font-size:13.5px;line-height:1.4;align-items:flex-start"><input type="checkbox" required style="width:20px;height:20px;margin:0;flex:none;accent-color:#FE6C3B">Elfogadom az <a href="/policies/privacy-policy">adatkezelési tájékoztatót</a>, és kérem a videókat és a hírlevelet.</label>
+      {%- endif -%}
+    {%- endform -%}
+  </div>
+</section>
+
+{%- comment -%} 11. GYIK {%- endcomment -%}
+<section class="wrap" style="padding-top:24px;padding-bottom:90px">
+  <div class="grid2" style="align-items:start">
+    <div>
+      <h2 class="h-l" style="margin-bottom:18px !important">Gyakori kérdések</h2>
+      <div style="background:#FFFFFF;border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:6px;max-width:400px">
+        <div style="font-weight:700;font-size:18px">Nem egy névtelen webshop vagyunk.</div>
+        <div style="font-size:16px;line-height:1.6">Magyar vállalkozás, Orosházáról.<br><a href="tel:+36307101650">+36 30 710 1650</a> · hétköznap 8–17<br><a href="mailto:info@aerobelle.hu">info@aerobelle.hu</a></div>
+      </div>
+    </div>
+    <div>
+      <details><summary>Biztosan nem égeti a hajat?<span class="pm" aria-hidden="true">+</span></summary><p>Legfeljebb 120 °C-on dolgozik, T-GLOSS kerámia bevonattal és negatív ionokkal, beépített túlmelegedés elleni védelemmel. 3 meleg hőfok közül választhatsz, a végén a hideg levegővel rögzíted a frizurát.</p></details>
+      <details><summary>Hosszú vagy dús hajra is jó?<span class="pm" aria-hidden="true">+</span></summary><p>Igen. Dúsabb hajnál tovább tart a szárítás, de a lépések ugyanazok: előszárítás a szárítófejjel, utána formázás tincsenként a választott fejjel.</p></details>
+      <details><summary>Biztonságos a készülék?<span class="pm" aria-hidden="true">+</span></summary><p>Igen. Független laboratóriumban, az EN 60335-1 és EN 60335-2-23 szabvány szerint vizsgálták, és minden ponton megfelelt.</p></details>
+      <details><summary>Mikor érkezik, hogyan fizethetek?<span class="pm" aria-hidden="true">+</span></summary><p>Ingyenes szállítás, általában 2 munkanap alatt nálad. Bankkártya, Apple Pay, Google Pay, PayPal vagy utánvét.</p></details>
+      <details><summary>Mi van, ha nem tetszik?<span class="pm" aria-hidden="true">+</span></summary><p>365 napod van visszaküldeni, nem csak a törvényes 14. A visszaküldés postaköltségét is mi álljuk, a vételárat legkésőbb 14 napon belül visszautaljuk.</p></details>
+      <a href="/pages/segitseg" style="display:inline-block;margin-top:18px;font-weight:700">Összes kérdés →</a>
+    </div>
+  </div>
+</section>
+
+</div>
+
+{% schema %}
+{
+  "name": "AeroBelle főoldal",
+  "settings": [],
+  "presets": [{ "name": "AeroBelle főoldal" }]
+}
+{% endschema %}
