@@ -7,7 +7,7 @@
 .abp-main{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:start;padding-top:28px;padding-bottom:64px}
 .abp-gal-main{position:relative;border-radius:22px;overflow:hidden;background:#FFFFFF;aspect-ratio:1/1}
 .abp-gal-main img{width:100%;height:100%;object-fit:cover;display:block}
-.abp-thumbs{display:flex;gap:10px;margin-top:12px;overflow-x:auto;padding-bottom:4px}
+.abp-thumbs{display:flex;gap:10px;margin-top:12px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}.abp-thumbs::-webkit-scrollbar{display:none}
 .abp-thumbs button{flex:none;width:76px;height:76px;border-radius:12px;overflow:hidden;border:2px solid transparent;padding:0;background:#FFFFFF;cursor:pointer}
 .abp-thumbs button[aria-current="true"]{border-color:#FE6C3B}
 .abp-thumbs img{width:100%;height:100%;object-fit:cover;display:block}
@@ -117,7 +117,7 @@
       </div>
     </fieldset>
 
-    <button type="button" class="btn abp-cta" id="abp-cta">Kosárba – <span data-abp-total>45 990 Ft</span></button>
+    <button type="button" class="btn abp-cta" id="abp-cta">Kosárba&nbsp;·&nbsp;<span data-abp-total>45 990 Ft</span></button>
     <p id="abp-err" role="alert" style="display:none;color:#B8461F;font-weight:700;font-size:14px">Valami hiba történt, kérjük, próbáld újra, vagy hívj minket: +36 30 710 1650.</p>
     <p style="font-size:13.5px;color:#5C534C;text-align:center;margin-top:-6px">Kártya · Apple Pay · Google Pay · PayPal · utánvét (díjmentes)</p>
 
