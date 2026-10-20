@@ -67,7 +67,17 @@
   {%- else -%}
   <div class="abc-grid">
     <div class="abc-items">
-      {%- if has_warranty and has_device == false -%}
+      {%- liquid
+        assign has_ebook = false
+        for item in cart.items
+          if item.product.handle contains 'hajkodex-'
+            assign has_ebook = true
+          endif
+        endfor
+      -%}
+      {%- if has_bundle and has_warranty or has_bundle and has_ebook -%}
+        <div class="abc-warn" data-abc-dup="1">A Teljes csomag már tartalmazza a 3 e-bookot és a kiterjesztett garanciát, ezért a külön betett példányokat kivettük a kosárból – így nem fizetsz kétszer.</div>
+      {%- elsif has_warranty and has_device == false -%}
         <div class="abc-warn" data-abc-orphan="1">A kiterjesztett garancia csak a hajformázóval együtt vásárolható, ezért kivettük a kosárból.</div>
       {%- endif -%}
 
@@ -133,7 +143,7 @@
       <div class="abc-line"><span>Szállítás</span><span class="abc-free">Ingyenes</span></div>
       <div class="abc-line"><span>Utánvét</span><span class="abc-free">Díjmentes</span></div>
       <div class="abc-total"><span style="font-weight:700">Fizetendő</span><b>{{ cart.total_price | money }}</b></div>
-      <div class="abc-note">Az árak az ÁFA-t tartalmazzák.</div>
+      <div class="abc-note">A feltüntetett árak végső árak, további költség nincs.</div>
       {%- if cart.requires_shipping -%}
       <div class="abc-ship"><b style="font-size:16px">Szállítási mód</b><div class="abc-note" style="margin-top:2px">PostaPonthoz vagy csomagautomatához itt válaszd ki az átvételi helyet; házhozszállításnál a címet a pénztárban adod meg.</div>
       {%- for block in section.blocks -%}{%- if block.type == '@app' -%}<div {{ block.shopify_attributes }}>{% render block %}</div>{%- endif -%}{%- endfor -%}
@@ -183,6 +193,12 @@
       }).then(function () { return post('/cart/add.js', { items: [ { id: BUNDLE, quantity: 1 } ] }); }).then(function () { location.reload(); });
     }
   });
+  if (root.querySelector('[data-abc-dup]')) {
+    fetch('/cart.js').then(function (r) { return r.json(); }).then(function (c) {
+      var u = {}; c.items.forEach(function (i) { if (i.handle === 'kiterjesztett-garancia' || /hajkodex-/.test(i.handle)) u[i.key] = 0; });
+      return post('/cart/update.js', { updates: u });
+    }).then(function () { setTimeout(function () { location.reload(); }, 1500); });
+  }
   if (root.querySelector('[data-abc-orphan]')) {
     fetch('/cart.js').then(function (r) { return r.json(); }).then(function (c) {
       var u = {}; c.items.forEach(function (i) { if (i.handle === 'kiterjesztett-garancia') u[i.key] = 0; });
