@@ -45,6 +45,7 @@
 .abc-up img{width:84px;height:84px;border-radius:12px;object-fit:cover;flex:none}
 .abc-up .btn{min-height:46px;font-size:14px;padding:0 18px;margin-top:10px}
 .abc-warn{background:#FFF3EE;border:2px solid #FE6C3B;border-radius:14px;padding:14px 16px;font-size:14.5px}
+.abc-ship{border-top:1px solid #E3D9D0;padding-top:14px}.abc-ship h2,.abc-ship h3{display:none !important}
 .abc-busy{opacity:.5;pointer-events:none}
 @media (max-width:989px){.abc-grid{grid-template-columns:1fr}.abc-sum{position:static}}
 @media (max-width:560px){.abc-item{grid-template-columns:72px minmax(0,1fr);}.abc-item img{width:72px;height:72px}.abc-price{grid-column:2;text-align:left}.abc-price s{display:inline;margin-left:6px}}
@@ -132,7 +133,10 @@
       <div class="abc-line"><span>Szállítás</span><span class="abc-free">Ingyenes</span></div>
       <div class="abc-line"><span>Utánvét</span><span class="abc-free">Díjmentes</span></div>
       <div class="abc-total"><span style="font-weight:700">Fizetendő</span><b>{{ cart.total_price | money }}</b></div>
-      <div class="abc-note">Az árak az ÁFA-t tartalmazzák. A szállítási módot (házhoz, PostaPont, csomagautomata) a következő lépésben választod ki.</div>
+      <div class="abc-note">Az árak az ÁFA-t tartalmazzák.</div>
+      <div class="abc-ship"><b style="font-size:16px">Szállítási mód</b><div class="abc-note" style="margin-top:2px">PostaPonthoz vagy csomagautomatához itt válaszd ki az átvételi helyet; házhozszállításnál a címet a pénztárban adod meg.</div>
+      {%- for block in section.blocks -%}{%- if block.type == '@app' -%}<div {{ block.shopify_attributes }}>{% render block %}</div>{%- endif -%}{%- endfor -%}
+      </div>
       <form action="{{ routes.cart_url }}" method="post">
         <button type="submit" name="checkout" class="btn" style="width:100%;min-height:60px;font-size:17px">Tovább a pénztárhoz →</button>
       </form>
@@ -142,7 +146,6 @@
         <div><span aria-hidden="true">✓</span><span><b>2 év jótállás</b>, 3 évre bővíthető, háztól házig cserével</span></div>
         <div><span aria-hidden="true">☎</span><span><b>Kérdésed van?</b> <a href="tel:+36307101650">+36 30 710 1650</a> · hétköznap 8–17</span></div>
       </div>
-      {%- for block in section.blocks -%}{%- if block.type == '@app' -%}<div {{ block.shopify_attributes }}>{% render block %}</div>{%- endif -%}{%- endfor -%}
     </aside>
   </div>
   {%- endif -%}
