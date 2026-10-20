@@ -3,9 +3,10 @@
 .abk-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:28px;align-items:start}
 .abk-f{display:flex;flex-direction:column;gap:14px}
 .abk-f label{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:700}
-.abk-f input,.abk-f textarea{font:inherit;font-size:16px;font-weight:400;border:1.5px solid #E3D9D0;border-radius:12px;padding:13px 14px;background:#FFFFFF;color:#2B2B2B;width:100%}
+.abh .abk-f,.abh .abk-c,.abh .abk-c *{text-align:left !important}
+.abh .abk-f input,.abh .abk-f textarea{-webkit-appearance:none !important;appearance:none !important;font:inherit !important;font-size:16px !important;font-weight:400 !important;border:1.5px solid #E3D9D0 !important;border-radius:12px !important;padding:13px 14px !important;background:#FFFFFF !important;color:#2B2B2B !important;width:100% !important;height:auto !important;min-height:50px !important;max-width:none !important;margin:0 !important;box-shadow:none !important;line-height:1.4 !important}
 .abk-f input:focus,.abk-f textarea:focus{outline:2px solid #FE6C3B;border-color:#FE6C3B}
-.abk-f textarea{min-height:150px;resize:vertical}
+.abh .abk-f textarea{min-height:150px !important;resize:vertical}
 .abk-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .abk-ok{background:#EAF5EA;border:2px solid #2E7D32;border-radius:14px;padding:16px;font-size:15.5px}
 .abk-err{background:#FFF3EE;border:2px solid #FE6C3B;border-radius:14px;padding:16px;font-size:15px}
