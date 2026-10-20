@@ -10,7 +10,7 @@
 <tr><td style="padding:28px 28px 8px;font-size:16px;line-height:1.6;">
 <p style="margin:0 0 14px;">Szia!</p>
 <p style="margin:0 0 14px;">Az elmúlt napokban megkaptad Dorka oktatóvideóit és a Hajmítoszok e-bookot. Reméljük, sikerült kipróbálni belőlük valamit – vagy legalább látni, hogy egy szép frizura nem órák kérdése.</p>
-<p style="margin:0 0 14px;">Ha most azon gondolkodsz, hogy otthon te is így csinálnád: összeraktunk egy csomagot, amiben minden benne van, ami ehhez kell. Nem csak egy gépet adunk, hanem azt is, hogy meg is tanuld használni.</p>
+<p style="margin:0 0 14px;">Ha most azon gondolkodsz, hogy otthon te is így csinálnád: összeraktunk egy csomagot, amiben minden benne van, ami ehhez kell. Nemcsak egy gépet adunk, hanem azt is, hogy meg is tanuld használni.</p>
 <h2 style="margin:22px 0 12px;font-size:22px;line-height:1.25;">A teljes csomag – 45 990 Ft <span style="font-size:16px;font-weight:normal;color:#5C534C;text-decoration:line-through;">51 900 Ft</span></h2>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:15px;line-height:1.5;">
 <tr><td style="padding:6px 0;border-bottom:1px solid #EFE7E0;">✔ <b>AeroBelle BD22 hajformázó</b> 5 fejjel</td></tr>
