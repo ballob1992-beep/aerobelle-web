@@ -56,6 +56,14 @@ main{padding:14px;max-width:720px;margin:0 auto}
 .tile.res{grid-column:span 2;background:var(--ink);color:var(--bg)}
 .tile.res .k{color:#CFC6BE}
 .tile.res .s{color:#CFC6BE}
+.cib{display:block;width:100%;text-align:left;background:var(--ink);color:var(--bg);border-radius:var(--r);padding:16px;margin-bottom:var(--gap)}
+.cib .k{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#CFC6BE;font-weight:600;display:flex;justify-content:space-between}
+.cib .v{font-family:Anton,sans-serif;font-size:34px;line-height:1.1;margin-top:6px}
+.cib .s{font-size:12.5px;color:#CFC6BE;margin-top:4px}
+.cib .w{margin-top:10px;padding-top:10px;border-top:1px solid #ffffff22;font-size:13px;display:flex;justify-content:space-between;gap:8px}
+.mv{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
+.mv:last-child{border-bottom:0}
+.mv small{display:block;color:var(--muted);font-size:12px}
 
 /* teendő sáv */
 .todo{display:flex;gap:8px;flex-wrap:wrap}
@@ -477,6 +485,7 @@ function rAtt(m,t){
   m.innerHTML = `
   <div class="period"><button class="pbtn" id="pPrev">‹</button><div class="m">${label}</div><button class="pbtn" id="pNext">›</button></div>
   <div class="seg" style="margin-bottom:14px"><button data-v="ho" class="${st.perMode==="ho"?"on":""}">Hónap</button><button data-v="ev" class="${st.perMode==="ev"?"on":""}">Év eleje óta</button></div>
+  ${cibKartya()}
   <div class="tiles">
     <button class="tile" data-go="Bevétel"><div class="k">Bevétel</div><div class="v num" style="color:var(--rev)">${fmt(s.bev)}</div><div class="s">${list.filter(x=>x.tipus==="Bevétel").length} tétel</div></button>
     <button class="tile" data-go="Kiadás"><div class="k">Kiadás</div><div class="v num" style="color:var(--exp)">${fmt(s.kia)}</div><div class="s">${list.filter(x=>x.tipus==="Kiadás").length} tétel</div></button>
@@ -510,11 +519,47 @@ function rAtt(m,t){
   m.querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{ st.perMode=b.dataset.v; render(); });
   m.querySelectorAll("[data-todo]").forEach(b=>b.onclick=()=>go("teendok"));
   if($("eloSav")) $("eloSav").onclick=()=>{ st.repTab="web"; go("kimutatasok"); };
+  if($("cibK")) $("cibK").onclick=openCib;
   if($("attFel")) $("attFel").onclick=()=>go("feladatok");
   m.querySelectorAll("[data-fel]").forEach(b=>b.onclick=()=>openFel(b.dataset.fel));
   m.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{ st.f={tipus:b.dataset.go,kategoria:"",fizetve:"",idoszak:st.perMode==="ev"?"ev:"+st.per.slice(0,4):"ho:"+st.per,biz:""}; st.q=""; go("tetelek"); });
   bindRows(m);
   if($("lsn")) $("lsn").onclick=()=>A&&A.openListenerSettings();
+}
+
+/* ============ CIB-számla egyenlege ============ */
+function idoFmt(ts){ const d=new Date(ts); return HOR[d.getMonth()]+" "+d.getDate()+". "+String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0"); }
+function cibKartya(){
+  const c=D&&D.cibSzamla; if(!c) return "";
+  if(c.hiba) return `<div class="card small"><h2>CIB-számla</h2><span style="color:var(--bad)">⚠ ${esc(c.hiba)}</span></div>`;
+  if(!c.horgony) return `<button class="cib" id="cibK"><div class="k"><span>CIB-számla most</span><span>›</span></div><div class="v">–</div>
+    <div class="s">${OWNER()?"Koppints ide, és add meg a CIB-appban látható egyenleget":"Még nincs beállítva"}</div></button>`;
+  const n=c.azota.length, sz=c.egyenleg-(c.fizetendoOssz||0);
+  return `<button class="cib" id="cibK"><div class="k"><span>CIB-számla most</span><span>›</span></div>
+    <div class="v num">${c.egyenleg<0?"−":""}${fmt(c.egyenleg)}</div>
+    <div class="s">${esc(idoFmt(c.horgony.ts))}-kor ${fmt(c.horgony.osszeg)} volt${n?` · azóta ${n} mozgás`:" · azóta nem volt mozgás"}</div>
+    ${c.fizetendoOssz?`<div class="w"><span>Kifizetendő számlák: ${fmt(c.fizetendoOssz)}</span><span>Szabadon: <b>${sz<0?"−":""}${fmt(sz)}</b></span></div>`:""}</button>`;
+}
+function openCib(){
+  const c=D.cibSzamla||{}, mv=x=>`<div class="mv"><span>${esc(x.partner||"–")}<small>${esc(idoFmt(x.ts))}</small></span><span class="num" style="color:${x.osszeg>0?"var(--rev)":"var(--ink)"}">${sfmt(x.osszeg)}</span></div>`;
+  openSheet(`<h2 class="display" style="font-size:26px;margin-bottom:6px">CIB-számla</h2>
+    ${c.horgony?`<p class="small muted" style="margin-bottom:12px">Kiinduló egyenleg: ${fmt(c.horgony.osszeg)} (${esc(idoFmt(c.horgony.ts))}, ${esc(c.horgony.forras||"")}). Ehhez adja hozzá az app a CIB-értesítésekből jött jóváírásokat és terheléseket.</p>`:
+      `<p class="small muted" style="margin-bottom:12px">A CIB az értesítésekben nem küld egyenleget, ezért egyszer meg kell adni a valós egyenleget – onnantól az értesítésekből számolja.</p>`}
+    ${c.fizetendo&&c.fizetendo.length?`<div class="card"><h2>Beérkezett, még nem fizetett számlák</h2>${c.fizetendo.map(x=>`<div class="mv"><span>${esc(x.partner)}<small>${esc(dfmt(x.datum))}</small></span><span class="num">${fmt(x.osszeg)}</span></div>`).join("")}</div>`:""}
+    <div class="card"><h2>${c.horgony?"Mozgások a kiinduló egyenleg óta":"Legutóbbi CIB-mozgások"}</h2>${(c.horgony?c.azota:c.utolso||[]).map(mv).join("")||`<p class="small muted">Nincs.</p>`}</div>
+    ${OWNER()?`<div class="card"><h2>Valós egyenleg megadása</h2>
+      <p class="small muted">Ha eltér a CIB-apptól (pl. banki díj vagy elmaradt értesítés miatt), írd be, amit a CIB-app most mutat.</p>
+      <label class="f"><span>Egyenleg most (Ft)</span><input id="cibO" class="amt num" inputmode="decimal" placeholder="0"></label>
+      <button class="btn pri" id="cibOk">Mentés</button></div>`:""}`, root=>{
+    const ok=root.querySelector("#cibOk"); if(!ok) return;
+    ok.onclick=()=>{
+      const v=Math.round(Number(String(root.querySelector("#cibO").value).replace(/[\s\u00a0]/g,"").replace(",",".")));
+      if(!isFinite(v)||String(root.querySelector("#cibO").value).trim()===""){ toast("Add meg az összeget"); return; }
+      const ts=Date.now(); opSend({t:"cibHorgony",osszeg:v,ts});
+      D.cibSzamla=Object.assign({},c,{horgony:{osszeg:v,ts,forras:"kézzel (app)"},egyenleg:v,azota:[]});
+      closeTop(); render(); toast("CIB-egyenleg mentve");
+    };
+  });
 }
 
 function rowHtml(x){
