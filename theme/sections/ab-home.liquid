@@ -21,7 +21,8 @@
 .abh .grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:18px}
 .abh .sec{padding-top:72px;padding-bottom:72px}
 .abh .h-xl{font-size:clamp(38px,6vw,60px)}
-.abh h1.h-xl{letter-spacing:1.6px !important;word-spacing:3px;line-height:1.12 !important}
+.abh h1.h-xl{font-size:clamp(32px,8.4vw,60px);letter-spacing:1.6px !important;word-spacing:3px;line-height:1.12 !important;word-break:normal;overflow-wrap:normal;hyphens:none}
+@media (max-width:749px){.abh #fejek .fej-media{order:2}}
 .abh .h-l{font-size:clamp(32px,4.5vw,50px)}
 .abh .mono{flex:none;width:44px;height:44px;border-radius:50%;background:#2B2B2B;color:#F9F4F0;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
 .abh .stars{color:#FE6C3B;letter-spacing:1px}
@@ -69,7 +70,7 @@
 {%- comment -%} 4. HOGYAN MŰKÖDIK {%- endcomment -%}
 <section id="fejek" style="background:#FFFFFF;scroll-margin-top:80px">
   <div class="wrap sec grid2">
-    <div style="position:relative;aspect-ratio:9/16;max-height:640px;border-radius:22px;overflow:hidden;background:#2B2B2B;max-width:360px;width:100%;justify-self:center">
+    <div class="fej-media" style="position:relative;aspect-ratio:9/16;max-height:640px;border-radius:22px;overflow:hidden;background:#2B2B2B;max-width:360px;width:100%;justify-self:center">
       <video src="https://cdn.shopify.com/videos/c/vp/3db7baaad9fc4521bd6a63b7d8f7f190/3db7baaad9fc4521bd6a63b7d8f7f190.HD-720p-1.6Mbps-97290189.mp4" poster="{{ cdn }}05_fejek_video_boritokep.jpg" autoplay muted loop playsinline style="height:100%;object-fit:cover"></video>
       <span style="position:absolute;left:14px;top:14px;background:#FE6C3B;font-size:12.5px;font-weight:700;padding:6px 12px;border-radius:999px">Fodrász kezében</span>
     </div>
