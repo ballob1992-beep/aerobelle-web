@@ -63,6 +63,12 @@ main{padding:14px;max-width:720px;margin:0 auto}
 .cib .w{margin-top:10px;padding-top:10px;border-top:1px solid #ffffff22;font-size:13px;display:flex;justify-content:space-between;gap:8px}
 .mv{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
 .mv:last-child{border-bottom:0}
+.ny{display:flex;justify-content:space-between;gap:10px;width:100%;text-align:left;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px;background:none}
+.ny:last-of-type{border-bottom:0}
+.ny .num{white-space:nowrap}
+.ny small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+.ny .h-lejart{color:var(--bad);font-weight:600} .ny .h-hamar{color:var(--warn);font-weight:600}
+.nysum{display:flex;justify-content:space-between;margin-top:8px;padding-top:10px;border-top:2px solid var(--ink);font-weight:600}
 .mv small{display:block;color:var(--muted);font-size:12px}
 
 /* teendő sáv */
@@ -486,6 +492,7 @@ function rAtt(m,t){
   <div class="period"><button class="pbtn" id="pPrev">‹</button><div class="m">${label}</div><button class="pbtn" id="pNext">›</button></div>
   <div class="seg" style="margin-bottom:14px"><button data-v="ho" class="${st.perMode==="ho"?"on":""}">Hónap</button><button data-v="ev" class="${st.perMode==="ev"?"on":""}">Év eleje óta</button></div>
   ${cibKartya()}
+  ${nyitottKartya()}
   <div class="tiles">
     <button class="tile" data-go="Bevétel"><div class="k">Bevétel</div><div class="v num" style="color:var(--rev)">${fmt(s.bev)}</div><div class="s">${list.filter(x=>x.tipus==="Bevétel").length} tétel</div></button>
     <button class="tile" data-go="Kiadás"><div class="k">Kiadás</div><div class="v num" style="color:var(--exp)">${fmt(s.kia)}</div><div class="s">${list.filter(x=>x.tipus==="Kiadás").length} tétel</div></button>
@@ -520,6 +527,7 @@ function rAtt(m,t){
   m.querySelectorAll("[data-todo]").forEach(b=>b.onclick=()=>go("teendok"));
   if($("eloSav")) $("eloSav").onclick=()=>{ st.repTab="web"; go("kimutatasok"); };
   if($("cibK")) $("cibK").onclick=openCib;
+  document.querySelectorAll("[data-nyk]").forEach(b=>b.onclick=()=>openNyitott(b.dataset.nyk));
   if($("attFel")) $("attFel").onclick=()=>go("feladatok");
   m.querySelectorAll("[data-fel]").forEach(b=>b.onclick=()=>openFel(b.dataset.fel));
   m.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{ st.f={tipus:b.dataset.go,kategoria:"",fizetve:"",idoszak:st.perMode==="ev"?"ev:"+st.per.slice(0,4):"ho:"+st.per,biz:""}; st.q=""; go("tetelek"); });
@@ -540,6 +548,56 @@ function cibKartya(){
     <div class="s">${esc(idoFmt(c.horgony.ts))}-kor ${fmt(c.horgony.osszeg)} volt${n?` · azóta ${n} mozgás`:" · azóta nem volt mozgás"}</div>
     ${c.fizetendoOssz?`<div class="w"><span>Kifizetendő számlák: ${fmt(c.fizetendoOssz)}</span><span>Szabadon: <b>${sz<0?"−":""}${fmt(sz)}</b></span></div>`:""}</button>`;
 }
+/* ============ Nyitott (fizetendő) számlák ============ */
+function napokIg(h){ if(!h) return null; const ma=new Date(); ma.setHours(0,0,0,0); return Math.round((new Date(h+"T00:00:00")-ma)/864e5); }
+function hataridoSzoveg(x){
+  const n=napokIg(x.hatarido);
+  if(n===null) return {t:"határidő nincs megadva",c:"h-hamar"};
+  if(n<0) return {t:`lejárt ${-n} napja (${dfmt(x.hatarido)})`,c:"h-lejart"};
+  if(n===0) return {t:"ma esedékes",c:"h-lejart"};
+  return {t:`${dfmt(x.hatarido)} – még ${n} nap`,c:n<=3?"h-hamar":""};
+}
+function nyitottKartya(){
+  const l=D&&D.nyitott; if(!l) return "";
+  if(l.hiba) return `<div class="card small"><h2>Nyitott számlák</h2><span style="color:var(--bad)">⚠ ${esc(l.hiba)}</span></div>`;
+  if(!l.length) return `<div class="card small"><h2>Nyitott számlák</h2><span class="muted">Nincs kifizetetlen számla ✓</span></div>`;
+  const ossz=l.reduce((a,x)=>a+(x.osszeg||0),0);
+  return `<div class="card"><h2>Nyitott számlák</h2>${l.map(x=>{ const h=hataridoSzoveg(x);
+    return `<button class="ny" data-nyk="${esc(x.kulcs)}"><span><b>${esc(x.partner||"Ismeretlen")}</b><small class="${h.c}">${x.allapot==="Adat hiányzik"?"⚠ adat hiányzik · ":""}${esc(h.t)}</small></span>
+      <span class="num">${x.osszeg?fmt(x.osszeg):"?"}</span></button>`; }).join("")}
+    <div class="nysum"><span>Összesen fizetendő</span><span class="num">${fmt(ossz)}</span></div></div>`;
+}
+function openNyitott(kulcs){
+  const x=(D.nyitott||[]).find(y=>y.kulcs===kulcs); if(!x) return;
+  const h=hataridoSzoveg(x);
+  const kesz=(ertek,uzenet)=>{ opSend(Object.assign({t:"nyitott",kulcs:x.kulcs},ertek));
+    if(ertek.allapot) D.nyitott=D.nyitott.filter(y=>y.kulcs!==x.kulcs); else Object.assign(x,ertek.osszeg!==undefined?{osszeg:ertek.osszeg}:{},ertek.hatarido?{hatarido:ertek.hatarido}:{},x.osszeg&&x.allapot==="Adat hiányzik"?{allapot:"Nyitott"}:{});
+    closeTop(); render(); toast(uzenet); };
+  openSheet(`<h2 class="display" style="font-size:24px;margin-bottom:4px">${esc(x.partner||"Számla")}</h2>
+    <p class="small muted" style="margin-bottom:12px">${x.szamlaszam?"Számlaszám: "+esc(x.szamlaszam)+" · ":""}beérkezett: ${esc(dfmt(x.beerkezett))}</p>
+    <div class="card"><div class="mv"><span>Fizetendő</span><b class="num">${x.osszeg?fmt(x.osszeg):"nincs megadva"}</b></div>
+      <div class="mv"><span>Határidő</span><b class="${h.c}">${esc(h.t)}</b></div>
+      <div class="mv"><span>Fizetés módja</span><span>${esc(x.mod||"–")}</span></div>
+      ${x.megj?`<div class="mv"><span>Megjegyzés</span><span class="small">${esc(x.megj)}</span></div>`:""}
+      ${x.link?`<button class="btn" data-url="${esc(x.link)}" style="margin-top:10px">📄 Számla megnyitása</button>`:""}</div>
+    <p class="small muted" style="margin:0 0 12px">Ha a kifizetés megjelenik a főkönyvben (ugyanekkora kiadás), a számla magától lekerül a listáról.</p>
+    ${OWNER()?`<div class="card"><h2>Adatok javítása</h2>
+      <label class="f"><span>Összeg (Ft)</span><input id="nyO" class="amt num" inputmode="decimal" value="${x.osszeg||""}"></label>
+      <label class="f"><span>Fizetési határidő</span><input id="nyH" type="date" value="${esc(x.hatarido||"")}"></label>
+      <button class="btn" id="nyMent">Mentés</button></div>
+      <button class="btn pri" id="nyFiz">✓ Kifizettem</button>
+      <button class="btn" id="nyNem" style="margin-top:8px">Nem kell fizetni</button>`:""}`, root=>{
+    root.querySelectorAll("[data-url]").forEach(e=>e.onclick=()=>A&&A.openUrl(e.dataset.url));
+    const q=id=>root.querySelector(id); if(!q("#nyFiz")) return;
+    q("#nyFiz").onclick=()=>kesz({allapot:"Kifizetve"},"Kifizetettnek jelölve");
+    q("#nyNem").onclick=()=>kesz({allapot:"Nem kell fizetni"},"Levéve a listáról");
+    q("#nyMent").onclick=()=>{ const o=String(q("#nyO").value).replace(/[\s\u00a0]/g,"").replace(",","."), hh=q("#nyH").value;
+      const e={}; if(o!=="") e.osszeg=Math.round(Number(o)); if(hh) e.hatarido=hh;
+      if(!Object.keys(e).length||(e.osszeg!==undefined&&!isFinite(e.osszeg))){ toast("Adj meg összeget vagy határidőt"); return; }
+      kesz(e,"Mentve"); };
+  });
+}
+
 function openCib(){
   const c=D.cibSzamla||{}, mv=x=>`<div class="mv"><span>${esc(x.partner||"–")}<small>${esc(idoFmt(x.ts))}</small></span><span class="num" style="color:${x.osszeg>0?"var(--rev)":"var(--ink)"}">${sfmt(x.osszeg)}</span></div>`;
   openSheet(`<h2 class="display" style="font-size:26px;margin-bottom:6px">CIB-számla</h2>
