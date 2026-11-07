@@ -493,6 +493,7 @@ function rAtt(m,t){
   <div class="seg" style="margin-bottom:14px"><button data-v="ho" class="${st.perMode==="ho"?"on":""}">Hónap</button><button data-v="ev" class="${st.perMode==="ev"?"on":""}">Év eleje óta</button></div>
   ${cibKartya()}
   ${nyitottKartya()}
+  ${feliratKartya()}
   <div class="tiles">
     <button class="tile" data-go="Bevétel"><div class="k">Bevétel</div><div class="v num" style="color:var(--rev)">${fmt(s.bev)}</div><div class="s">${list.filter(x=>x.tipus==="Bevétel").length} tétel</div></button>
     <button class="tile" data-go="Kiadás"><div class="k">Kiadás</div><div class="v num" style="color:var(--exp)">${fmt(s.kia)}</div><div class="s">${list.filter(x=>x.tipus==="Kiadás").length} tétel</div></button>
@@ -527,6 +528,7 @@ function rAtt(m,t){
   m.querySelectorAll("[data-todo]").forEach(b=>b.onclick=()=>go("teendok"));
   if($("eloSav")) $("eloSav").onclick=()=>{ st.repTab="web"; go("kimutatasok"); };
   if($("cibK")) $("cibK").onclick=openCib;
+  if($("felK")) $("felK").onclick=()=>{ st.repTab="fel"; go("kimutatasok"); };
   document.querySelectorAll("[data-nyk]").forEach(b=>b.onclick=()=>openNyitott(b.dataset.nyk));
   if($("attFel")) $("attFel").onclick=()=>go("feladatok");
   m.querySelectorAll("[data-fel]").forEach(b=>b.onclick=()=>openFel(b.dataset.fel));
@@ -862,12 +864,58 @@ function rTodo(m,t){
   });
 }
 
+/* ============ Feliratkozások (landing oldalak) ============ */
+function felNap(n){ const d=new Date(Date.now()-n*864e5); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+function feliratKartya(){
+  const F=D&&D.feliratkozas; if(!F||F.hiba||!F.lista) return "";
+  const ma=felNap(0), h7=felNap(6), n0=F.lista.filter(x=>x.nap===ma).length, n7=F.lista.filter(x=>x.nap>=h7).length;
+  const ut=F.lista[0];
+  return `<button class="card" id="felK" style="display:block;width:100%;text-align:left"><h2 style="display:flex;justify-content:space-between"><span>Feliratkozások</span><span>›</span></h2>
+    <div style="display:flex;gap:18px;align-items:baseline"><div><span class="display num" style="font-size:30px">${n0}</span> <span class="small muted">ma</span></div>
+    <div><span class="display num" style="font-size:30px">${n7}</span> <span class="small muted">utolsó 7 nap</span></div></div>
+    ${ut?`<div class="small muted" style="margin-top:4px">Legutóbbi: ${esc(dfmt(ut.nap))} ${esc(ut.ora)} · ${esc(ut.lp.toUpperCase())} · ${esc(ut.forras)}</div>`:""}</button>`;
+}
+function rRepFel(m){
+  const F=D&&D.feliratkozas;
+  if(!F){ m.innerHTML=`<div class="card"><h2>Feliratkozások</h2><p class="small muted">A háttérszkript még nem küld feliratkozási adatot – telepítsd az AeroBelle_feliratkozas.gs fájlt.</p></div>`; return; }
+  if(F.hiba){ m.innerHTML=`<div class="card"><h2>Feliratkozások</h2><p style="color:var(--bad)">⚠ ${esc(F.hiba)}</p></div>`; return; }
+  st.felir=st.felir||{nap:30};
+  const n=st.felir.nap, tol=felNap(n-1), L=F.lista.filter(x=>x.nap>=tol);
+  const etol=felNap(2*n-1), E=F.lista.filter(x=>x.nap>=etol&&x.nap<tol).length;
+  const napok=Array.from({length:n},(_,i)=>felNap(n-1-i)), db={}; L.forEach(x=>db[x.nap]=(db[x.nap]||0)+1);
+  const mx=Math.max(3,...napok.map(d=>db[d]||0)), Wd=340,H=120,pb=18,cw=Wd/napok.length,bw=Math.max(2,Math.min(12,cw-2)), yv=v=>H-pb-(v/mx)*(H-pb-14);
+  const svg=`<svg viewBox="0 0 ${Wd} ${H}" role="img" aria-label="Napi feliratkozások">
+    <line x1="0" x2="${Wd}" y1="${H-pb}" y2="${H-pb}" stroke="#EAE2DB"/><text x="0" y="10" font-size="10" fill="#8D8782">${mx}/nap</text>
+    ${napok.map((d,i)=>{ const v=db[d]||0, x=i*cw+(cw-bw)/2;
+      return `${v?`<rect x="${x}" y="${yv(v)}" width="${bw}" height="${(H-pb)-yv(v)}" rx="${Math.min(3,bw/2)}" fill="#6B5BB5"><title>${d}: ${v}</title></rect>`:""}
+      ${(i===0||i===napok.length-1||(napok.length>14&&i%Math.ceil(napok.length/5)===0))?`<text x="${i===0?0:i===napok.length-1?Wd:i*cw+cw/2}" y="${H-4}" font-size="9.5" text-anchor="${i===0?"start":i===napok.length-1?"end":"middle"}" fill="#5E5A57">${d.slice(5).replace("-",".")}.</text>`:""}`; }).join("")}</svg>`;
+  const csop=k=>{ const o={}; L.forEach(x=>{ const v=k(x)||"–"; o[v]=(o[v]||0)+1; }); return Object.entries(o).sort((a,b)=>b[1]-a[1]); };
+  const sav=(lst)=>{ const mx2=Math.max(1,...lst.map(x=>x[1])); return lst.map(([k,v])=>`<div class="hb"><div class="l"><span><b>${esc(k)}</b></span><span class="num">${v} fő</span></div>
+    <div class="track"><div class="fill" style="width:${Math.max(2,v/mx2*100)}%;background:#6B5BB5"></div></div></div>`).join("")||`<div class="empty">Nincs adat.</div>`; };
+  const meta=-items.filter(x=>x.kategoria==="Hirdetés – Meta" && x.datum>=tol).reduce((a,x)=>a+x.osszeg,0);
+  const vas=L.filter(x=>x.vasarolt>0).length;
+  const valt=E?Math.round((L.length-E)/E*100):null;
+  m.innerHTML=`<div class="seg" style="margin-bottom:12px">${[7,30,90].map(k=>`<button data-fn="${k}" class="${n===k?"on":""}">${k} nap</button>`).join("")}</div>
+    <div class="tiles">
+      <div class="tile"><div class="k">Feliratkozó</div><div class="v num">${L.length}</div><div class="s">${valt===null?"utolsó "+n+" nap":`${valt>=0?"▲":"▼"} ${Math.abs(valt)}% az előző ${n} naphoz`}</div></div>
+      <div class="tile"><div class="k">Ebből vásárolt</div><div class="v num">${vas}</div><div class="s">${L.length?Math.round(vas/L.length*100):0}% konverzió</div></div>
+      <div class="tile"><div class="k">Meta-költés</div><div class="v num">${fmt(meta)}</div><div class="s">főkönyv szerint</div></div>
+      <div class="tile"><div class="k">Egy feliratkozó ára</div><div class="v num">${L.length&&meta?fmt(meta/L.length):"–"}</div><div class="s">${meta?"Meta-költés / feliratkozó":"még nincs Meta-terhelés"}</div></div>
+    </div>
+    <div class="card"><h2>Napi feliratkozások</h2>${svg}</div>
+    <div class="card"><h2>Landing oldal és forrás</h2>${sav(csop(x=>x.lp.toUpperCase()+" · "+x.forras))}</div>
+    <div class="card"><h2>Mit kértek (csali)</h2>${sav(csop(x=>x.csali==="oktatovideo"?"Oktatóvideó":x.csali))}</div>
+    <div class="card"><h2>Legutóbbi feliratkozók</h2>${L.slice(0,20).map(x=>`<div class="mv"><span>${esc(x.email)}<small>${esc(dfmt(x.nap))} ${esc(x.ora)} · ${esc(x.lp.toUpperCase())} · ${esc(x.forras)}</small></span><span class="small" style="color:${x.vasarolt?"var(--ok)":"var(--muted)"}">${x.vasarolt?"✓ vásárolt":"még nem vásárolt"}</span></div>`).join("")||`<div class="empty">Ebben az időszakban nem volt feliratkozás.</div>`}
+      <p class="small muted" style="margin-top:10px">A teszt-feliratkozások (teszt/próba címek, FFM, saját címek) nem számítanak. Az adat 10 percenként frissül a Shopifyból. A Meta-terhelés a számlázás miatt napokkal késhet, ezért a feliratkozónkénti ár csak tájékoztató.</p></div>`;
+  m.querySelectorAll("[data-fn]").forEach(b=>b.onclick=()=>{ st.felir.nap=+b.dataset.fn; render(); });
+}
+
 /* ============ Kimutatások ============ */
 function rRep(m){
-  const tabs=[["penz","Pénzügy"],["mkt","Marketing"],["web","Webshop"],["fed","Fedezet"],["kalk","Kalkulátor"]];
+  const tabs=[["penz","Pénzügy"],["fel","Feliratkozás"],["mkt","Marketing"],["web","Webshop"],["fed","Fedezet"],["kalk","Kalkulátor"]];
   m.innerHTML=`<div class="seg scroll" style="margin-bottom:14px">${tabs.map(([k,l])=>`<button data-rt="${k}" class="${st.repTab===k?"on":""}">${l}</button>`).join("")}</div><div id="repBody"></div>`;
   m.querySelectorAll("[data-rt]").forEach(b=>b.onclick=()=>{ st.repTab=b.dataset.rt; render(); });
-  ({penz:rRepPenz, mkt:rRepMkt, web:rRepWeb, fed:rRepFed, kalk:rRepKalk})[st.repTab]($("repBody"));
+  ({penz:rRepPenz, fel:rRepFel, mkt:rRepMkt, web:rRepWeb, fed:rRepFed, kalk:rRepKalk})[st.repTab]($("repBody"));
 }
 function rRepPenz(m){
   const y = st.repHo.slice(0,4);
