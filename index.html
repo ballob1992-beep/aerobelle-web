@@ -340,10 +340,10 @@ window.addEventListener("resize",()=>{ clearTimeout(window.__rz); window.__rz=se
 document.addEventListener("keydown",e=>{ if(e.key==="Escape" && st.stack.length){ closeTop(); } });
 const HO = ["január","február","március","április","május","június","július","augusztus","szeptember","október","november","december"];
 const HOR = ["jan.","febr.","márc.","ápr.","máj.","jún.","júl.","aug.","szept.","okt.","nov.","dec."];
-const TIPUSOK = ["Kiadás","Bevétel","Befizetés","Kölcsön"];
+const TIPUSOK = ["Kiadás","Bevétel","Befizetés","Kölcsön","Átvezetés"];
 const FIZ = ["CIB","Erste","Wise (Erste)","MBH","Készpénz","Nyitott"];
 const TISZ = "Tisztázandó";
-const TCOL = {"Bevétel":"var(--rev)","Kiadás":"var(--exp)","Befizetés":"var(--fund)","Kölcsön":"var(--loan)"};
+const TCOL = {"Bevétel":"var(--rev)","Kiadás":"var(--exp)","Befizetés":"var(--fund)","Kölcsön":"var(--loan)","Átvezetés":"var(--loan)"};
 
 let snap = {}, D = null, items = [], pending = [];
 const st = {
@@ -400,7 +400,7 @@ function biz(x){
   const l=x.link||"";
   if(/https?:/.test(l)) return "megvan";
   if(/^nem sz/i.test(l)) return "nemkell";
-  if(x.tipus==="Befizetés"||x.tipus==="Kölcsön") return "nemkell";
+  if(x.tipus==="Befizetés"||x.tipus==="Kölcsön"||x.tipus==="Átvezetés") return "nemkell";
   return "hianyzik";
 }
 const BZ = {megvan:["📎","megvan"], hianyzik:["⚠","hiányzik"], nemkell:["–","nem kell"]};
