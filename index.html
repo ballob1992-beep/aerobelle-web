@@ -494,6 +494,7 @@ function rAtt(m,t){
   ${cibKartya()}
   ${nyitottKartya()}
   ${feliratKartya()}
+  ${nyjKartya()}
   <div class="tiles">
     <button class="tile" data-go="Bevétel"><div class="k">Bevétel</div><div class="v num" style="color:var(--rev)">${fmt(s.bev)}</div><div class="s">${list.filter(x=>x.tipus==="Bevétel").length} tétel</div></button>
     <button class="tile" data-go="Kiadás"><div class="k">Kiadás</div><div class="v num" style="color:var(--exp)">${fmt(s.kia)}</div><div class="s">${list.filter(x=>x.tipus==="Kiadás").length} tétel</div></button>
@@ -529,6 +530,7 @@ function rAtt(m,t){
   if($("eloSav")) $("eloSav").onclick=()=>{ st.repTab="web"; go("kimutatasok"); };
   if($("cibK")) $("cibK").onclick=openCib;
   if($("felK")) $("felK").onclick=()=>{ st.repTab="fel"; go("kimutatasok"); };
+  if($("nyjK")) $("nyjK").onclick=openNyj;
   document.querySelectorAll("[data-nyk]").forEach(b=>b.onclick=()=>openNyitott(b.dataset.nyk));
   if($("attFel")) $("attFel").onclick=()=>go("feladatok");
   m.querySelectorAll("[data-fel]").forEach(b=>b.onclick=()=>openFel(b.dataset.fel));
@@ -908,6 +910,42 @@ function rRepFel(m){
     <div class="card"><h2>Legutóbbi feliratkozók</h2>${L.slice(0,20).map(x=>`<div class="mv"><span>${esc(x.email)}<small>${esc(dfmt(x.nap))} ${esc(x.ora)} · ${esc(x.lp.toUpperCase())} · ${esc(x.forras)}</small></span><span class="small" style="color:${x.vasarolt?"var(--ok)":"var(--muted)"}">${x.vasarolt?"✓ vásárolt":"még nem vásárolt"}</span></div>`).join("")||`<div class="empty">Ebben az időszakban nem volt feliratkozás.</div>`}
       <p class="small muted" style="margin-top:10px">A teszt-feliratkozások (teszt/próba címek, FFM, saját címek) nem számítanak. Az adat 10 percenként frissül a Shopifyból. A Meta-terhelés a számlázás miatt napokkal késhet, ezért a feliratkozónkénti ár csak tájékoztató.</p></div>`;
   m.querySelectorAll("[data-fn]").forEach(b=>b.onclick=()=>{ st.felir.nap=+b.dataset.fn; render(); });
+}
+
+
+/* ============ Mikulás-nyereményjáték ============ */
+function nyjNap(ts){ const d=new Date(ts); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+function nyjOra(ts){ const d=new Date(ts); return String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0"); }
+function nyjKartya(){
+  const N=D&&D.nyeremeny; if(!N) return "";
+  if(N.hiba) return `<div class="card small"><h2>Nyereményjáték</h2><span style="color:var(--bad)">⚠ ${esc(N.hiba)}</span></div>`;
+  const most=Date.now(), elotte=most<N.kezd, vege=most>=N.veg;
+  const ut=(N.lista||[]).find(x=>!x.teszt);
+  const allapot=elotte?`Indul: ${esc(dfmt(nyjNap(N.kezd)))} ${esc(nyjOra(N.kezd))}`:vege?"Lezárult – jöhet a sorsolás":`Még ${Math.ceil((N.veg-most)/864e5)} nap a jelentkezésből`;
+  return `<button class="card" id="nyjK" style="display:block;width:100%;text-align:left"><h2 style="display:flex;justify-content:space-between"><span>🎅 Nyereményjáték</span><span>›</span></h2>
+    <div style="display:flex;gap:18px;align-items:baseline"><div><span class="display num" style="font-size:30px">${N.jelentkezo||0}</span> <span class="small muted">jelentkező</span></div>
+    <div><span class="display num" style="font-size:30px">${N.ma||0}</span> <span class="small muted">ma</span></div></div>
+    <div class="small muted" style="margin-top:4px">${allapot}${ut?` · legutóbbi: ${esc(dfmt(nyjNap(ut.ts)))} ${esc(nyjOra(ut.ts))}`:""}${elotte&&N.teszt?` · ${N.teszt} teszt`:""}</div></button>`;
+}
+function openNyj(){
+  const N=D.nyeremeny||{}, napi=N.napi||{};
+  const k=nyjNap(N.kezd), napok=[]; for(let t=N.kezd; t<N.veg; t+=864e5) napok.push(nyjNap(t));
+  const mx=Math.max(3,...napok.map(d=>napi[d]||0)), Wd=340,H=120,pb=18,cw=Wd/napok.length,bw=Math.max(3,Math.min(16,cw-3)), yv=v=>H-pb-(v/mx)*(H-pb-14);
+  const svg=`<svg viewBox="0 0 ${Wd} ${H}" role="img" aria-label="Napi jelentkezések">
+    <line x1="0" x2="${Wd}" y1="${H-pb}" y2="${H-pb}" stroke="#EAE2DB"/><text x="0" y="10" font-size="10" fill="#8D8782">${mx}/nap</text>
+    ${napok.map((d,i)=>{ const v=napi[d]||0, x=i*cw+(cw-bw)/2;
+      return `${v?`<rect x="${x}" y="${yv(v)}" width="${bw}" height="${(H-pb)-yv(v)}" rx="3" fill="#E23B3B"><title>${d}: ${v}</title></rect><text x="${x+bw/2}" y="${yv(v)-3}" font-size="9" text-anchor="middle" fill="#5E5A57">${v}</text>`:""}
+      ${(i===0||i===napok.length-1||i%4===0)?`<text x="${i===0?0:i===napok.length-1?Wd:i*cw+cw/2}" y="${H-4}" font-size="9.5" text-anchor="${i===0?"start":i===napok.length-1?"end":"middle"}" fill="#5E5A57">${d.slice(5).replace("-",".")}.</text>`:""}`; }).join("")}</svg>`;
+  const F=Object.entries(N.forras||{}).sort((a,b)=>b[1]-a[1]), fmx=Math.max(1,...F.map(x=>x[1]));
+  const L=N.lista||[];
+  openSheet(`<h2 class="display" style="font-size:24px;margin-bottom:4px">🎅 Mikulás-nyereményjáték</h2>
+    <p class="small muted" style="margin-bottom:12px">Jelentkezés: ${esc(dfmt(k))} ${esc(nyjOra(N.kezd))} – ${esc(dfmt(nyjNap(N.veg-60000)))} 23:59 · sorsolás dec. 7.</p>
+    <div class="tiles"><div class="tile"><div class="k">Érvényes jelentkező</div><div class="v num">${N.jelentkezo||0}</div><div class="s">ma: ${N.ma||0}</div></div>
+      <div class="tile"><div class="k">Tesztjelentkezés</div><div class="v num">${N.teszt||0}</div><div class="s">nem sorsolják</div></div></div>
+    <div class="card"><h2>Napi jelentkezések</h2>${svg}</div>
+    <div class="card"><h2>Honnan jöttek</h2>${F.map(([kk,v])=>`<div class="hb"><div class="l"><span><b>${esc(kk)}</b></span><span class="num">${v} fő</span></div><div class="track"><div class="fill" style="width:${Math.max(2,v/fmx*100)}%;background:#E23B3B"></div></div></div>`).join("")||`<div class="empty">Még nincs érvényes jelentkezés.</div>`}</div>
+    <div class="card"><h2>Legutóbbi jelentkezők</h2>${L.map(x=>`<div class="mv"><span>${esc(x.nev||"–")} · ${esc(x.email)}<small>${esc(dfmt(nyjNap(x.ts)))} ${esc(nyjOra(x.ts))} · ${esc(x.forras)}</small></span><span class="small" style="color:${x.teszt?"var(--muted)":"var(--ok)"}">${x.teszt?"teszt":"✓ érvényes"}</span></div>`).join("")||`<div class="empty">Még senki nem jelentkezett.</div>`}
+      <p class="small muted" style="margin-top:10px">A teljes lista a Főkönyv „Nyereményjáték” lapján van. A forrás a hirdetés linkjében lévő utm_source (pl. facebook, tiktok, megosztas).</p></div>`);
 }
 
 /* ============ Kimutatások ============ */
