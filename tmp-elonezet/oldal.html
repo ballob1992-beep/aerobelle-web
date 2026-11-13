@@ -1,0 +1,474 @@
+<!DOCTYPE html><html lang="hu"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>NYJ előnézet</title>
+<style>body{margin:0;background:#F9F4F0}.wrap{max-width:1200px;margin:0 auto;padding:40px 20px 0}.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}</style></head>
+<body><div class="wrap"><!-- AeroBelle Mikulás-nyereményjáték – önálló Shopify-oldal (Online áruház → Oldalak → „Nyereményjáték”).
+     A témához nem kell hozzányúlni. Be-/kikapcsolás: az oldal láthatósága (Látható / Rejtett).
+     FONTOS: ezt az oldalt csak a „<>” (HTML) nézetben szerkeszd, a szövegszerkesztő elronthatja a kódot.
+     Indulás előtti előnézet: /pages/nyeremenyjatek?elonezet=1 -->
+<style>
+@font-face{font-family:'AB Anton';font-style:normal;font-weight:400;font-display:swap;src:url(https://cdn.shopify.com/s/files/1/0905/0089/0960/files/ab-anton-latin-400.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'AB Anton';font-style:normal;font-weight:400;font-display:swap;src:url(https://cdn.shopify.com/s/files/1/0905/0089/0960/files/ab-anton-latinext-400.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20AB,U+20AD-20C0,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'AB Grotesk';font-style:normal;font-weight:400;font-display:swap;src:url(https://cdn.shopify.com/s/files/1/0905/0089/0960/files/ab-spacegrotesk-latin-400.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'AB Grotesk';font-style:normal;font-weight:400;font-display:swap;src:url(https://cdn.shopify.com/s/files/1/0905/0089/0960/files/ab-spacegrotesk-latinext-400.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20AB,U+20AD-20C0,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'AB Grotesk';font-style:normal;font-weight:700;font-display:swap;src:url(https://cdn.shopify.com/s/files/1/0905/0089/0960/files/ab-spacegrotesk-latin-700.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'AB Grotesk';font-style:normal;font-weight:700;font-display:swap;src:url(https://cdn.shopify.com/s/files/1/0905/0089/0960/files/ab-spacegrotesk-latinext-700.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20AB,U+20AD-20C0,U+2C60-2C7F,U+A720-A7FF}
+
+.ab-nyj{--a:#FE6C3B;--d:#2B2B2B;--c:#F9F4F0;--m:#5E5852;--l:#E6DDD4;--w:#FFF;--fd:'AB Anton',Impact,'Arial Narrow',sans-serif;--fb:'AB Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+  background:var(--c);color:var(--d);font-family:var(--fb);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;text-align:left;
+  box-shadow:0 0 0 100vmax var(--c);clip-path:inset(0 -100vmax);margin-top:-40px;padding-top:8px}
+.ab-nyj *,.ab-nyj *::before,.ab-nyj *::after{box-sizing:border-box}
+.ab-nyj [hidden]{display:none!important}
+.ab-nyj h1,.ab-nyj h2,.ab-nyj h3{font-family:var(--fd);font-weight:400;text-transform:uppercase;margin:0;color:inherit;letter-spacing:0}
+/* a téma minden elemre text-transform:none!important-ot tesz – ezt itt felülírjuk */
+.ab-nyj h1,.ab-nyj h2,.ab-nyj h3,.ab-nyj h1 span,.ab-nyj h2 span,.ab-nyj .nyj-hoho,.ab-nyj .nyj-btn,.ab-nyj .nyj-ok strong,.ab-nyj .nyj-ok strong span,.ab-nyj .nyj-soon b,.ab-nyj .nyj-ba figcaption,.ab-nyj .nyj-x3{text-transform:uppercase!important}
+.ab-nyj .nyj-ba figcaption small{text-transform:none!important}
+.ab-nyj :where(p){margin:0;color:inherit;font-size:inherit;line-height:inherit}
+.ab-nyj ul,.ab-nyj ol{margin:0;padding:0;list-style:none}
+.ab-nyj li{margin:0;padding:0}
+.ab-nyj li::marker{content:''}
+.ab-nyj img,.ab-nyj video{display:block;max-width:100%;height:auto;margin:0;border:0}
+.ab-nyj a{color:inherit}
+.ab-nyj b,.ab-nyj strong{font-weight:700}
+.ab-nyj :focus-visible{outline:3px solid var(--d);outline-offset:2px}
+.nyj-acc{color:var(--a)}
+.nyj-pill{display:inline-block;padding:6px 12px;border-radius:999px;background:var(--d);color:var(--c);font-size:13px;font-weight:700;letter-spacing:.06em}
+.ab-nyj .nyj-btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;line-height:1.1;gap:8px;min-height:56px;padding:10px 24px;border:0;border-radius:14px;background:var(--a);color:var(--d);font-family:var(--fd);font-size:20px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;cursor:pointer;width:100%;box-shadow:none}
+.ab-nyj .nyj-btn[disabled]{opacity:.6;cursor:wait}
+.ab-nyj .nyj-btn--ghost{background:var(--w);border:2px solid var(--d);font-size:17px;min-height:50px}
+
+.nyj-hero{display:grid;gap:22px;padding:8px 0 36px}
+.ab-nyj h1{font-size:40px;line-height:1.04;margin-top:12px}
+.nyj-lead{font-size:18px;margin-top:12px!important;max-width:560px}
+.nyj-img{position:relative;border-radius:22px;overflow:hidden;background:#EDE4DB}
+.nyj-img img{width:100%;height:100%;object-fit:cover}
+.nyj-heroimg{aspect-ratio:16/10}
+.nyj-x3{position:absolute;left:14px;top:14px;background:var(--a);color:var(--d);font-family:var(--fd);font-size:30px;line-height:1;padding:10px 14px;border-radius:14px}
+.nyj-val{position:absolute;right:14px;bottom:14px;background:var(--d);color:var(--c);font-size:13px;font-weight:700;padding:7px 11px;border-radius:999px}
+.nyj-count{display:flex;gap:8px;margin-top:16px}
+.nyj-count div{background:var(--w);border:1px solid var(--l);border-radius:12px;padding:8px 10px;text-align:center;min-width:64px}
+.nyj-count b{display:block;font-family:var(--fd);font-weight:400;font-size:26px;line-height:1}
+.nyj-count span{font-size:12px;color:var(--m)}
+
+.nyj-box{background:var(--w);border:1px solid var(--l);border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:12px;box-shadow:0 10px 30px rgba(43,43,43,.06)}
+.nyj-box h2{font-size:28px;line-height:1.1}
+.nyj-lbl{font-size:14px;font-weight:700;margin:0}
+.ab-nyj .nyj-in{width:100%;height:54px;padding:0 16px;border-radius:12px;border:1px solid #C9BFB5;background:var(--w);font-size:16px;font-family:var(--fb);color:var(--d);margin:0;box-shadow:none}
+.nyj-chk{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;line-height:1.5;color:var(--m);cursor:pointer;margin:0}
+.ab-nyj .nyj-chk input{width:22px;height:22px;margin:0;flex-shrink:0;accent-color:var(--a);-webkit-appearance:checkbox;appearance:auto}
+.nyj-chk a{text-decoration:underline}
+.nyj-note{font-size:13px;color:var(--m)}
+.nyj-err{padding:12px 14px;border-radius:10px;background:#FDE4D9;color:#7A2410;font-size:14px;font-weight:700}
+.nyj-gift{display:flex;gap:12px;align-items:center;background:var(--c);border-radius:14px;padding:12px}
+.nyj-gift img{width:56px;height:56px;border-radius:10px;object-fit:cover;flex-shrink:0}
+.nyj-gift p{font-size:14px}
+.nyj-ok strong{font-family:var(--fd);font-weight:400;font-size:30px;text-transform:uppercase;line-height:1.05}
+.nyj-share{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.nyj-follow{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ab-nyj .nyj-btn--soc{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--d);color:var(--c)}
+.nyj-dark .nyj-btn--soc,.nyj-final .nyj-btn--soc{background:var(--c);color:var(--d)}
+.nyj-final .nyj-follow{max-width:420px;margin:0 auto}
+.nyj-soon{background:var(--d);color:var(--c);border-radius:20px;padding:22px;text-align:center}
+.nyj-soon b{font-family:var(--fd);font-weight:400;font-size:26px;text-transform:uppercase;display:block}
+
+.nyj-sec{padding:44px 0}
+.nyj-sec h2{font-size:32px;line-height:1.08;margin-bottom:10px}
+.nyj-sub{color:var(--m);font-size:16px;margin-bottom:22px!important;max-width:620px}
+.nyj-dark{background:var(--d);color:var(--c);box-shadow:0 0 0 100vmax var(--d);clip-path:inset(0 -100vmax)}
+.nyj-dark .nyj-sub{color:#CFC7BF}
+.nyj-incl{display:grid;gap:12px}
+.nyj-incl li{display:flex;gap:12px;align-items:flex-start;font-size:16px}
+.nyj-incl svg{flex-shrink:0;margin-top:3px}
+.nyj-cols{display:grid;gap:24px}
+.nyj-dorka{display:flex;gap:14px;align-items:center;margin-top:22px;background:rgba(255,255,255,.07);border-radius:16px;padding:12px}
+.nyj-dorka img{width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.nyj-dorka p{font-size:14.5px}
+
+.nyj-ba{display:grid;gap:14px}
+.nyj-ba figure{margin:0;background:var(--w);border:1px solid var(--l);border-radius:18px;padding:10px}
+.nyj-ba .pair{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.nyj-ba .ph{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:720/828;background:#EDE4DB}
+.nyj-ba .ph img{width:100%;height:100%;object-fit:cover}
+.nyj-ba .ph span{position:absolute;left:8px;top:8px;background:rgba(43,43,43,.85);color:#fff;font-size:12px;font-weight:700;padding:3px 8px;border-radius:999px}
+.nyj-ba .ph.u span{background:var(--a);color:var(--d)}
+.nyj-ba figcaption{font-family:var(--fd);text-transform:uppercase;font-size:20px;padding:10px 4px 2px}
+.nyj-ba figcaption small{display:block;font-family:var(--fb);text-transform:none;font-size:14px;color:var(--m)}
+
+.nyj-vids{display:grid;grid-auto-flow:column;grid-auto-columns:70%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;-webkit-overflow-scrolling:touch}
+.nyj-vid{scroll-snap-align:start;position:relative;border-radius:18px;overflow:hidden;aspect-ratio:9/16;background:#000;border:0;padding:0;cursor:pointer;width:100%}
+.nyj-vid img,.nyj-vid video{width:100%;height:100%;object-fit:cover}
+.nyj-vid .pl{position:absolute;left:50%;top:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:rgba(254,108,59,.95);display:flex;align-items:center;justify-content:center}
+.nyj-vid .nm{position:absolute;left:0;right:0;bottom:0;padding:28px 12px 12px;background:linear-gradient(transparent,rgba(0,0,0,.75));color:#fff;font-weight:700;font-size:14px;text-align:left}
+.nyj-vid.on .pl,.nyj-vid.on .nm{display:none}
+
+.nyj-steps{display:grid;gap:12px;counter-reset:s}
+.nyj-steps li{background:var(--w);border:1px solid var(--l);border-radius:16px;padding:18px 18px 18px 64px;position:relative;counter-increment:s}
+.nyj-steps li::before{content:counter(s);position:absolute;left:18px;top:16px;width:32px;height:32px;border-radius:50%;background:var(--a);font-family:var(--fd);font-size:20px;display:flex;align-items:center;justify-content:center}
+.nyj-steps b{display:block;font-size:17px}
+.nyj-steps span{font-size:14.5px;color:var(--m)}
+.nyj-dates{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.nyj-dates div{background:var(--w);border:1px solid var(--l);border-radius:14px;padding:14px}
+.nyj-dates small{display:block;color:var(--m);font-size:13px}
+.nyj-dates b{font-size:17px}
+.nyj-faq details{background:var(--w);border:1px solid var(--l);border-radius:14px;padding:0 16px;margin-bottom:8px}
+.nyj-faq summary{cursor:pointer;font-weight:700;padding:15px 0;list-style:none}
+.nyj-faq summary::-webkit-details-marker{display:none}
+.nyj-faq summary::after{content:'+';float:right;font-family:var(--fd);font-size:20px;line-height:1;color:var(--a)}
+.nyj-faq details[open] summary::after{content:'–'}
+.nyj-faq details p{padding:0 0 15px;color:var(--m);font-size:15px}
+.nyj-final{text-align:center}
+.nyj-final .nyj-btn{max-width:420px;margin-top:18px}
+.nyj-fine{font-size:12.5px;color:var(--m);margin-top:22px!important;text-align:center}
+
+.nyj-hero,.nyj-sec{position:relative}
+.nyj-hero>*:not(.nyj-snow),.nyj-sec>*:not(.nyj-snow){position:relative;z-index:1}
+.nyj-snow{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.nyj-snow i{position:absolute;top:-12px;border-radius:50%;background:var(--sf,#fff);opacity:.55;animation:nyjfall linear infinite}
+.nyj-hero .nyj-snow i{--sf:#C8D2DE}
+@keyframes nyjfall{to{transform:translate(var(--dx,20px),var(--fh,900px))}}
+@media (prefers-reduced-motion:reduce){.nyj-snow{display:none}}
+.nyj-hoho{font-family:var(--fd);text-transform:uppercase;color:#E23B3B;font-size:20px;letter-spacing:.03em;margin-top:14px!important}
+.nyj-hoho+h1{margin-top:2px}
+.nyj-cntlbl{font-size:14px;font-weight:700;margin-top:16px!important}
+.nyj-cntlbl+.nyj-count{margin-top:8px}
+.nyj-x3{overflow:visible}
+.nyj-hat{position:absolute;width:46px;left:-16px;top:-20px;transform:rotate(-20deg)}
+.nyj-x3{animation:nyjwob 2.8s ease-in-out infinite}
+@keyframes nyjwob{0%,100%{transform:rotate(0)}50%{transform:rotate(-4deg) scale(1.04)}}
+.nyj-santa{width:96px;height:96px;flex-shrink:0;align-self:center;animation:nyjwob 3s ease-in-out infinite}
+.nyj-santa--big{display:block;width:110px;height:110px;margin:0 auto 6px}
+.nyj-ok{text-align:center}
+.nyj-ok p{text-align:center}
+@media (prefers-reduced-motion:reduce){.nyj-x3,.nyj-santa{animation:none}}
+
+.nyj-cta-m{margin-top:18px}
+.nyj-vlbl{font-size:14px;font-weight:700;margin-top:22px!important;margin-bottom:8px!important}
+.nyj-vids--hero{grid-auto-flow:initial!important;grid-template-columns:repeat(4,1fr);overflow:visible!important;gap:8px}
+.nyj-vids--hero .nyj-vid{border-radius:12px}
+.nyj-vids--hero .nyj-vid .pl{width:40px;height:40px;margin:-20px 0 0 -20px}
+.nyj-vids--hero .nyj-vid .pl svg{width:18px;height:18px}
+.nyj-vids--hero .nyj-vid .nm{font-size:11.5px;padding:18px 6px 6px;line-height:1.2}
+.nyj-lb{position:fixed;inset:0;z-index:2147483000;background:rgba(20,18,16,.92);display:flex;align-items:center;justify-content:center;padding:16px}
+.nyj-lb video{max-height:86vh;max-width:min(480px,100%);width:auto;border-radius:16px;background:#000}
+.nyj-lb button{position:absolute;top:14px;right:14px;width:46px;height:46px;border-radius:50%;border:0;background:#fff;color:#2B2B2B;font-size:26px;line-height:1;cursor:pointer}
+@media (min-width:750px){
+  .nyj-ba{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:990px){
+  .nyj-hero{grid-template-columns:1.05fr .95fr;align-items:start;gap:48px;padding:24px 0 64px}
+  .nyj-hero>.nyj-form-col{position:sticky;top:110px}
+  .nyj-cta-m{display:none!important}
+  .nyj-heroimg{aspect-ratio:1014/933}
+  .ab-nyj h1{font-size:64px}
+  .nyj-lead{font-size:20px}
+  .nyj-sec{padding:72px 0}
+  .nyj-sec h2{font-size:46px}
+  .nyj-cols{grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .nyj-steps{grid-template-columns:repeat(3,1fr)}
+  .nyj-dates{grid-template-columns:repeat(4,1fr)}
+  .nyj-faq{max-width:760px}
+}
+</style>
+
+<div class="ab-nyj" id="nyj"
+  data-start="2026-11-23T10:00:00+01:00" data-end="2026-12-07T00:00:00+01:00"
+  data-api="about:blank#https://script.google.com/macros/s/AKfycbxhvEhDZykLoVi-xb3QgX8dPwb6pyIES912Lmg8bhk5nEsrWf1336VMnK4De0O7-rDQNg/exec">
+
+  <!-- 1. NYITÓ + JELENTKEZÉS -->
+  <section class="nyj-hero" aria-labelledby="nyj-h1">
+    <div class="nyj-snow" data-snow aria-hidden="true"></div>
+    <div>
+      <span class="nyj-pill">🎅 NYEREMÉNYJÁTÉK · NOV. 23. – DEC. 6.</span>
+      <p class="nyj-hoho">Ho-ho-hó! Idén a Mikulás nálunk osztogat…</p>
+      <h1 id="nyj-h1">Nyerj szalonfrizurát <span class="nyj-acc">egy életre!</span></h1>
+      <p class="nyj-lead">Hajszárító, volumenkefe, göndörítő és simító <b>egyetlen készülékben</b>, mellé Dorka fodrász oktatóvideói, 3 e-book és 3 év garancia. <b>3 szerencsés nyertes</b> viszi haza a 45 990 Ft-os Teljes csomagot – a részvétel ingyenes, és <b>aki jelentkezik, már most kap ajándékot!</b></p>
+      <p class="nyj-cntlbl" data-count hidden>Ennyi időd van még bekerülni a zsákba:</p>
+      <div class="nyj-count" data-count aria-label="Hátralévő idő a jelentkezés végéig" hidden>
+        <div><b data-d>0</b><span>nap</span></div><div><b data-h>0</b><span>óra</span></div><div><b data-m>0</b><span>perc</span></div>
+      </div>
+      <a class="nyj-btn nyj-cta-m" href="#jelentkezes" data-tojel>Jelentkezem a sorsolásra!</a>
+      <p class="nyj-vlbl">Ők már használják – koppints a videóra:</p>
+      <div class="nyj-vids nyj-vids--hero">
+      <button type="button" class="nyj-vid" data-src="https://cdn.shopify.com/s/files/1/0905/0089/0960/files/aerobelle-velemeny-birki-erika.mp4"><img src="https://cdn.shopify.com/s/files/1/0905/0089/0960/files/aerobelle-velemeny-birki-erika-poster.jpg?width=400" alt="" width="540" height="960" loading="lazy"><span class="pl"><svg width="26" height="26" viewBox="0 0 24 24" fill="#2B2B2B" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><span class="nm">Birki Erika</span><span class="visually-hidden">videós véleményének lejátszása</span></button>
+      <button type="button" class="nyj-vid" data-src="https://cdn.shopify.com/s/files/1/0905/0089/0960/files/aerobelle-velemeny-farago-vanda.mp4"><img src="https://cdn.shopify.com/s/files/1/0905/0089/0960/files/aerobelle-velemeny-farago-vanda-poster.jpg?width=400" alt="" width="540" height="960" loading="lazy"><span class="pl"><svg width="26" height="26" viewBox="0 0 24 24" fill="#2B2B2B" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><span class="nm">Faragó Vanda</span><span class="visually-hidden">videós véleményének lejátszása</span></button>
+      <button type="button" class="nyj-vid" data-src="https://cdn.shopify.com/s/files/1/0905/0089/0960/files/aerobelle-velemeny-zsindely-zsanna-v4.mp4"><img src="https://cdn.shopify.com/s/files/1/0905/0089/0960/files/aerobelle-velemeny-zsindely-zsanna-poster.jpg?width=400" alt="" width="360" height="640" loading="lazy"><span class="pl"><svg width="26" height="26" viewBox="0 0 24 24" fill="#2B2B2B" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><span class="nm">Zsindely Zsanna</span><span class="visually-hidden">videós véleményének lejátszása</span></button>
+      <button type="button" class="nyj-vid" data-src="https://cdn.shopify.com/s/files/1/0905/0089/0960/files/aerobelle-velemeny-matovic-mana.mp4"><img src="https://cdn.shopify.com/s/files/1/0905/0089/0960/files/aerobelle-velemeny-matovic-mana-poster.jpg?width=400" alt="" width="540" height="960" loading="lazy"><span class="pl"><svg width="26" height="26" viewBox="0 0 24 24" fill="#2B2B2B" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><span class="nm">Matovic Mana</span><span class="visually-hidden">videós véleményének lejátszása</span></button>
+      </div>
+    </div>
+
+    <div class="nyj-form-col" id="jelentkezes">
+      <div class="nyj-soon" data-soon hidden><b>A Mikulás még pakol!</b><p style="margin-top:6px">A jelentkezés november 23-án 10 órakor indul. Jegyezd fel, és gyere vissza!</p></div>
+      <div class="nyj-soon" data-closed hidden><b>A Mikulás zsákja bezárult!</b><p style="margin-top:6px">Köszönjük, hogy ennyien játszottatok! December 7-én sorsolunk, a nyerteseket e-mailben értesítjük.</p></div>
+
+      <div class="nyj-box" data-formbox>
+        <form method="post" action="/contact#nyj-form" id="nyj-form" accept-charset="UTF-8" novalidate style="display:flex;flex-direction:column;gap:12px;margin:0">
+          <input type="hidden" name="form_type" value="customer">
+          <input type="hidden" name="utf8" value="✓">
+          <input type="hidden" name="contact[tags]" value="lp5, nyeremenyjatek, newsletter" data-tags>
+          <h2>Kérem a nyerési esélyem!</h2>
+          <p class="nyj-err" role="alert" data-err hidden></p>
+          <label class="nyj-lbl" for="nyj-nev">Keresztnév</label>
+          <input class="nyj-in" id="nyj-nev" type="text" name="contact[first_name]" autocomplete="given-name" maxlength="40" required placeholder="pl. Anna">
+          <label class="nyj-lbl" for="nyj-email">E-mail-cím <span style="font-weight:400;color:var(--m)">(ide szólunk, ha nyertél)</span></label>
+          <input class="nyj-in" id="nyj-email" type="email" name="contact[email]" autocomplete="email" autocapitalize="off" spellcheck="false" required placeholder="pl. anna@gmail.com">
+          <label class="nyj-chk"><input type="checkbox" required data-chk><span>Elmúltam 18 éves, és elfogadom a <a href="/pages/nyeremenyjatek-szabalyzat" target="_blank" rel="noopener">Játékszabályzatot</a> és az <a href="/policies/privacy-policy" target="_blank" rel="noopener">Adatkezelési tájékoztatót</a>. Tudomásul veszem, hogy a jelentkezéssel feliratkozom az AeroBelle hírlevelére, amelyről bármikor leiratkozhatok – ez a részvételemet nem érinti.</span></label>
+          <button type="submit" class="nyj-btn" data-submit>Igen, játszom!</button>
+          <div class="nyj-gift">
+            <img src="https://cdn.shopify.com/s/files/1/0905/0089/0960/files/aerobelle-ebook-hajmitoszok.jpg?width=120" alt="" width="56" height="56" loading="lazy">
+            <p><b>Azonnali ajándék:</b> a <b>Hajkódex – Hajmítoszok</b> e-book a tiéd, amint jelentkeztél – akkor is, ha nem te nyersz.</p>
+          </div>
+          <p class="nyj-note">30 másodperc · 100% ingyen · vásárlás nélkül. Csak magyarországi szállítási címre.</p>
+        </form>
+      </div>
+
+      <div class="nyj-box nyj-ok" data-ok role="status" tabindex="-1" hidden>
+        <svg class="nyj-santa" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="62" r="58" fill="#FDE4D9"/><path d="M22 54C26 26 60 8 94 20c-8 8-10 20-6 34z" fill="#E23B3B"/><circle cx="98" cy="22" r="9" fill="#fff" stroke="#EADBD0"/><ellipse cx="60" cy="72" rx="27" ry="23" fill="#F6D2B8"/><path d="M45 68q5-6 10 0M65 68q5-6 10 0" stroke="#2B2B2B" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="42" cy="77" r="5" fill="#F4A3A3"/><circle cx="78" cy="77" r="5" fill="#F4A3A3"/><path d="M33 76q-6 20 9 31q9 12 18 9q9 3 18-9q15-11 9-31q-10 11-27 11T33 76z" fill="#fff" stroke="#EADBD0"/><ellipse cx="51" cy="85" rx="10" ry="5.5" fill="#fff" stroke="#EDE4DB"/><ellipse cx="69" cy="85" rx="10" ry="5.5" fill="#fff" stroke="#EDE4DB"/><circle cx="60" cy="79" r="5" fill="#F0A58C"/><rect x="16" y="46" width="88" height="17" rx="8.5" fill="#fff" stroke="#EADBD0"/></svg>
+        <strong>Ho-ho-hó<span data-oknev></span>! Bekerültél a Mikulás zsákjába!</strong>
+        <p>December 7-én húzunk – ha te vagy a szerencsés, e-mailben szólunk. Addig is itt az ajándékod, és e-mailben is elküldjük:</p>
+        <a class="nyj-btn" href="https://cdn.shopify.com/s/files/1/0905/0089/0960/files/AeroBelle-Hajkodex-Hajmitoszok.pdf" target="_blank" rel="noopener" download>Kérem az e-bookot</a>
+        <hr style="border:0;border-top:1px solid var(--l);margin:6px 0">
+        <p><b>Kövess minket, itt jelentjük be a sorsolás eredményét!</b> December 7-én a TikTokon és az Instán derül ki, ki nyert – és addig is ott vannak a legjobb hajformázó trükkök.</p>
+        <div class="nyj-follow "><a class="nyj-btn nyj-btn--soc" href="https://www.tiktok.com/@aerobelle.hu?utm_source=nyeremenyjatek" target="_blank" rel="noopener" data-kovet="tiktok"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9a7.4 7.4 0 0 0 4.3 1.4V7.3a4.3 4.3 0 0 1-3.2-1.5z"/></svg><span>TikTok</span></a><a class="nyj-btn nyj-btn--soc" href="https://www.instagram.com/aerobelle.hu/?utm_source=nyeremenyjatek" target="_blank" rel="noopener" data-kovet="instagram"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm6-7.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0zM21.9 8c-.1-1.6-.4-3-1.6-4.2S17.6 2.2 16 2.1C14.3 2 9.7 2 8 2.1 6.4 2.2 5 2.5 3.8 3.7S2.2 6.4 2.1 8C2 9.7 2 14.3 2.1 16c.1 1.6.4 3 1.6 4.2s2.6 1.5 4.2 1.6c1.7.1 6.3.1 8 0 1.6-.1 3-.4 4.2-1.6s1.5-2.6 1.6-4.2c.1-1.7.1-6.3 0-8zm-2.1 9.9a3.3 3.3 0 0 1-1.8 1.8c-1.3.5-4.3.4-5.7.4s-4.4.1-5.7-.4a3.3 3.3 0 0 1-1.8-1.8c-.5-1.3-.4-4.3-.4-5.7s-.1-4.4.4-5.7a3.3 3.3 0 0 1 1.8-1.8C7.6 4.2 10.6 4.3 12 4.3s4.4-.1 5.7.4a3.3 3.3 0 0 1 1.8 1.8c.5 1.3.4 4.3.4 5.7s.1 4.4-.4 5.7z"/></svg><span>Instagram</span></a></div>
+        <hr style="border:0;border-top:1px solid var(--l);margin:6px 0">
+        <p><b>Ne hagyd ki a barátnőidet!</b> Küldd el nekik is – ők is ingyen játszhatnak, és ők is kapnak e-bookot.</p>
+        <div class="nyj-share">
+          <a class="nyj-btn nyj-btn--ghost" data-wa href="#" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="nyj-btn nyj-btn--ghost" data-fb href="#" target="_blank" rel="noopener">Facebook</a>
+        </div>
+        <button type="button" class="nyj-btn nyj-btn--ghost" data-native hidden>Megosztás…</button>
+        <button type="button" class="nyj-btn nyj-btn--ghost" data-copy>Link másolása</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. A NYEREMÉNY -->
+  <section class="nyj-sec nyj-dark" aria-labelledby="nyj-mit">
+    <div class="nyj-snow" data-snow aria-hidden="true"></div>
+    <div class="nyj-cols">
+      <div>
+        <h2 id="nyj-mit">Ez lapul a <span class="nyj-acc">Mikulás zsákjában</span></h2>
+        <p class="nyj-sub">3 nyertes, és mindegyikük egy komplett <b style="color:#fff">AeroBelle BD22 Teljes csomagot</b> visz haza:</p>
+        <ul class="nyj-incl">
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FE6C3B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>BD22 hajformázó 5 fejjel</b> – szárít, dúsít, göndörít, simít. Egy készülék a fiókban öt helyett.</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FE6C3B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Dorka fodrász oktatóvideói</b> – lépésről lépésre, a vizes hajtól a kész frizuráig</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FE6C3B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>3 kötetes Hajkódex e-book</b> – minden, amit a hajadról tudni érdemes</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FE6C3B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>3 év garancia</b> háztól házig cserével – nyugodt karácsony 2029-ig</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FE6C3B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Ingyenes kiszállítás</b> – rénszarvas helyett futárral, de igyekszünk, hogy a fa alá érjen 🎄</span></li>
+        </ul>
+        <div class="nyj-dorka">
+          <img src="https://cdn.shopify.com/s/files/1/0905/0089/0960/files/aerobelle-lp3-hero-dorka.jpg?width=160" alt="Dorka, fodrász" width="64" height="64" loading="lazy">
+          <p><b style="color:#fff">Dorka, fodrász</b> – a csomagban lévő videókban megmutatja, hogyan hozd ki otthon is a szalonos frizurát.</p>
+        </div>
+      </div>
+      <div class="nyj-img" style="aspect-ratio:1/1"><img src="https://cdn.shopify.com/s/files/1/0905/0089/0960/files/aerobelle-teljes-csomag.jpg?width=900" alt="Az AeroBelle BD22 Teljes csomag tartalma: hajformázó, 3 e-book, 3 év garancia" width="900" height="900" loading="lazy"><span class="nyj-x3">3×<svg class="nyj-hat" viewBox="0 0 60 44" aria-hidden="true"><path d="M6 34C10 14 30 3 51 9c-6 6-8 15-6 25z" fill="#E23B3B"/><rect x="2" y="29" width="46" height="13" rx="6.5" fill="#fff"/><circle cx="52" cy="9" r="6.5" fill="#fff"/></svg></span></div>
+    </div>
+  </section>
+
+  <!-- 3. ELŐTTE / UTÁNA -->
+  <section class="nyj-sec" aria-labelledby="nyj-ba">
+    <h2 id="nyj-ba">Vizes hajból <span class="nyj-acc">szalonfrizura</span> – otthon</h2>
+    <p class="nyj-sub">Ezt tudja a nyeremény: három frizura egyetlen készülékkel, a saját fürdőszobádban. (A képek Dorka oktatóvideóiból valók.)</p>
+    <div class="nyj-ba">
+      <figure>
+        <div class="pair">
+          <div class="ph"><img src="https://cdn.shopify.com/s/files/1/0905/0089/0960/files/aerobelle-lp3-volumen-elotte.jpg?width=400" alt="Előtte: vizes haj" width="720" height="828" loading="lazy"><span>Előtte</span></div>
+          <div class="ph u"><img src="https://cdn.shopify.com/s/files/1/0905/0089/0960/files/aerobelle-lp3-volumen-utana.jpg?width=400" alt="Utána: dús, volumenes haj" width="720" height="828" loading="lazy"><span>Utána</span></div>
+        </div>
+        <figcaption>Dús volumen<small>körkefével beszárítva</small></figcaption>
+      </figure>
+      <figure>
+        <div class="pair">
+          <div class="ph"><img src="https://cdn.shopify.com/s/files/1/0905/0089/0960/files/aerobelle-lp3-furtok-elotte.jpg?width=400" alt="Előtte: vizes haj" width="720" height="828" loading="lazy"><span>Előtte</span></div>
+          <div class="ph u"><img src="https://cdn.shopify.com/s/files/1/0905/0089/0960/files/aerobelle-lp3-furtok-utana.jpg?width=400" alt="Utána: kész fürtök" width="720" height="828" loading="lazy"><span>Utána</span></div>
+        </div>
+        <figcaption>Ünnepi fürtök<small>a két göndörítő fejjel</small></figcaption>
+      </figure>
+      <figure>
+        <div class="pair">
+          <div class="ph"><img src="https://cdn.shopify.com/s/files/1/0905/0089/0960/files/aerobelle-lp3-egyenes-elotte.jpg?width=400" alt="Előtte: vizes haj" width="720" height="828" loading="lazy"><span>Előtte</span></div>
+          <div class="ph u"><img src="https://cdn.shopify.com/s/files/1/0905/0089/0960/files/aerobelle-lp3-egyenes-utana.jpg?width=400" alt="Utána: egyenes, fényes haj" width="720" height="828" loading="lazy"><span>Utána</span></div>
+        </div>
+        <figcaption>Tükörsima, fényes<small>a laposkefével</small></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 5. MENETE + GYIK -->
+  <section class="nyj-sec" style="padding-top:0" aria-labelledby="nyj-hogyan">
+    <h2 id="nyj-hogyan">Így kerülsz a zsákba</h2>
+    <ol class="nyj-steps">
+      <li><b>Jelentkezz</b><span>Keresztnév + e-mail-cím. Kb. 30 másodperc, tényleg ennyi.</span></li>
+      <li><b>Vidd az ajándékod</b><span>A Hajmítoszok e-book azonnal a tiéd – ezt mindenki megkapja.</span></li>
+      <li><b>Szorítsd a hüvelykujjad!</b><span>December 7-én sorsolunk, a 3 nyertest e-mailben értesítjük.</span></li>
+    </ol>
+    <div class="nyj-dates">
+      <div><small>Jelentkezés</small><b>nov. 23. – dec. 6.</b></div>
+      <div><small>Sorsolás</small><b>dec. 7.</b></div>
+      <div><small>Nyertesek</small><b>3 fő</b></div>
+      <div><small>Részvétel</small><b>100% ingyen</b></div>
+    </div>
+
+    <h2 style="margin-top:48px">Gyakori kérdések</h2>
+    <div class="nyj-faq" style="margin-top:16px">
+      <details><summary>Tényleg ingyenes? Hol a csapda?</summary><p>Nincs csapda. A részvétel teljesen ingyenes, nem kell hozzá vásárolni. Annyit kérünk, hogy feliratkozz a hírlevelünkre – amiről bármikor leiratkozhatsz.</p></details>
+      <details><summary>Többször is jelentkezhetek, hogy nagyobb legyen az esélyem?</summary><p>Sajnos nem: egy e-mail-cím egyszer kerülhet a zsákba. Ha újra kitöltöd, az e-bookot viszont újra letöltheted.</p></details>
+      <details><summary>Ki játszhat?</summary><p>Minden 18. életévét betöltött, magyarországi szállítási címmel rendelkező magánszemély. A részletek a Játékszabályzatban olvashatók.</p></details>
+      <details><summary>Honnan tudom meg, hogy nyertem?</summary><p>A sorsolás után e-mailben értesítünk. A nyeremény átvételéhez a Játékszabályzatban megadott határidőn belül válaszolnod kell a szállítási címeddel, különben pótnyertes lép a helyedbe – úgyhogy figyeld a postafiókod (és a Promóciók mappát is)!</p></details>
+      <details><summary>Hol jelentitek be a nyerteseket?</summary><p>A nyerteseket e-mailben értesítjük, a sorsolás eredményét pedig december 7-én a <a href="https://www.tiktok.com/@aerobelle.hu" target="_blank" rel="noopener">TikTok</a> és az <a href="https://www.instagram.com/aerobelle.hu/" target="_blank" rel="noopener">Instagram</a> oldalunkon is bejelentjük (a nyertes nevét csak az ő hozzájárulásával). A követés nem feltétele a játéknak, de így biztosan nem maradsz le semmiről.</p></details>
+      <details><summary>Leiratkozhatok később a hírlevélről?</summary><p>Igen, bármikor, minden levél alján egy kattintással. A már leadott jelentkezésedet ez nem érinti.</p></details>
+    </div>
+  </section>
+
+  <!-- 6. ZÁRÓ FELHÍVÁS -->
+  <section class="nyj-sec nyj-dark nyj-final" aria-labelledby="nyj-zaro" data-final>
+    <div class="nyj-snow" data-snow aria-hidden="true"></div>
+    <svg class="nyj-santa nyj-santa--big" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="62" r="58" fill="#FDE4D9"/><path d="M22 54C26 26 60 8 94 20c-8 8-10 20-6 34z" fill="#E23B3B"/><circle cx="98" cy="22" r="9" fill="#fff" stroke="#EADBD0"/><ellipse cx="60" cy="72" rx="27" ry="23" fill="#F6D2B8"/><path d="M45 68q5-6 10 0M65 68q5-6 10 0" stroke="#2B2B2B" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="42" cy="77" r="5" fill="#F4A3A3"/><circle cx="78" cy="77" r="5" fill="#F4A3A3"/><path d="M33 76q-6 20 9 31q9 12 18 9q9 3 18-9q15-11 9-31q-10 11-27 11T33 76z" fill="#fff" stroke="#EADBD0"/><ellipse cx="51" cy="85" rx="10" ry="5.5" fill="#fff" stroke="#EDE4DB"/><ellipse cx="69" cy="85" rx="10" ry="5.5" fill="#fff" stroke="#EDE4DB"/><circle cx="60" cy="79" r="5" fill="#F0A58C"/><rect x="16" y="46" width="88" height="17" rx="8.5" fill="#fff" stroke="#EADBD0"/></svg>
+    <h2 id="nyj-zaro">Ne a szomszéd <span class="nyj-acc">vigye el!</span></h2>
+    <p class="nyj-sub" style="margin:0 auto">30 másodperc az egész, az e-book pedig azonnal a tiéd – akkor is, ha nem te nyersz.</p>
+    <a class="nyj-btn" href="#jelentkezes" data-tojel>Kérem a nyerési esélyem!</a>
+    <p style="margin:26px auto 10px;text-align:center"><b>A sorsolás eredményét itt jelentjük be – kövess minket:</b></p>
+    <div class="nyj-follow "><a class="nyj-btn nyj-btn--soc" href="https://www.tiktok.com/@aerobelle.hu?utm_source=nyeremenyjatek" target="_blank" rel="noopener" data-kovet="tiktok"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9a7.4 7.4 0 0 0 4.3 1.4V7.3a4.3 4.3 0 0 1-3.2-1.5z"/></svg><span>TikTok</span></a><a class="nyj-btn nyj-btn--soc" href="https://www.instagram.com/aerobelle.hu/?utm_source=nyeremenyjatek" target="_blank" rel="noopener" data-kovet="instagram"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm6-7.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0zM21.9 8c-.1-1.6-.4-3-1.6-4.2S17.6 2.2 16 2.1C14.3 2 9.7 2 8 2.1 6.4 2.2 5 2.5 3.8 3.7S2.2 6.4 2.1 8C2 9.7 2 14.3 2.1 16c.1 1.6.4 3 1.6 4.2s2.6 1.5 4.2 1.6c1.7.1 6.3.1 8 0 1.6-.1 3-.4 4.2-1.6s1.5-2.6 1.6-4.2c.1-1.7.1-6.3 0-8zm-2.1 9.9a3.3 3.3 0 0 1-1.8 1.8c-1.3.5-4.3.4-5.7.4s-4.4.1-5.7-.4a3.3 3.3 0 0 1-1.8-1.8c-.5-1.3-.4-4.3-.4-5.7s-.1-4.4.4-5.7a3.3 3.3 0 0 1 1.8-1.8C7.6 4.2 10.6 4.3 12 4.3s4.4-.1 5.7.4a3.3 3.3 0 0 1 1.8 1.8c.5 1.3.4 4.3.4 5.7s.1 4.4-.4 5.7z"/></svg><span>Instagram</span></a></div>
+    <p class="nyj-fine" style="color:#CFC7BF">Szervező: Balló Balázs EV (AeroBelle), 5904 Orosháza, Aranyeső utca 14. A játékot a Meta (Facebook, Instagram) és a TikTok nem szponzorálja, nem támogatja és nem kezeli. Részletek: <a href="/pages/nyeremenyjatek-szabalyzat">Játékszabályzat</a>.</p>
+  </section>
+</div>
+<script>
+(function () {
+  var root = document.getElementById('nyj'); if (!root) return;
+  var $ = function (s) { return root.querySelector(s); };
+  var start = new Date(root.getAttribute('data-start')), end = new Date(root.getAttribute('data-end')), api = root.getAttribute('data-api');
+  var q = new URLSearchParams(location.search), preview = q.get('elonezet') === '1' || /shopifypreview\.com$/.test(location.hostname) || q.has('preview_key');
+  var form = document.getElementById('nyj-form'), box = $('[data-formbox]'), okBox = $('[data-ok]');
+  var KEY = 'aerobelle_nyj', BTN = 'Igen, játszom!';
+  var pageUrl = location.origin + location.pathname;
+
+  var src = (q.get('utm_source') || '').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 30);
+  try { if (src) localStorage.setItem(KEY + '_src', src); else src = localStorage.getItem(KEY + '_src') || ''; } catch (e) {}
+
+  // hóesés (csak dísz; kikapcsol, ha a látogató a csökkentett mozgást kérte)
+  if (!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+    Array.prototype.forEach.call(root.querySelectorAll('[data-snow]'), function (box) {
+      var h = (box.parentNode.offsetHeight || 800) + 30, n = Math.min(40, Math.round(box.parentNode.offsetWidth / 30));
+      for (var i = 0; i < n; i++) {
+        var f = document.createElement('i'), sz = 3 + Math.random() * 5, dur = 7 + Math.random() * 9;
+        f.style.cssText = 'left:' + (Math.random() * 100) + '%;width:' + sz + 'px;height:' + sz + 'px;animation-duration:' + dur + 's;animation-delay:-' + (Math.random() * dur) + 's;--fh:' + h + 'px;--dx:' + (Math.random() * 60 - 30) + 'px';
+        box.appendChild(f);
+      }
+    });
+  }
+
+  // videók: koppintásra nagyban nyílnak meg (nem lassítják az oldalt)
+  function lightbox(src, poster) {
+    var lb = document.createElement('div'); lb.className = 'nyj-lb'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-label', 'Videó');
+    var v = document.createElement('video'); v.src = src; v.poster = poster || ''; v.controls = true; v.playsInline = true; v.setAttribute('playsinline', '');
+    var x = document.createElement('button'); x.type = 'button'; x.setAttribute('aria-label', 'Bezárás'); x.textContent = '×';
+    function zar() { v.pause(); lb.remove(); document.removeEventListener('keydown', esc); }
+    function esc(e) { if (e.key === 'Escape') zar(); }
+    x.onclick = zar; lb.onclick = function (e) { if (e.target === lb) zar(); }; document.addEventListener('keydown', esc);
+    lb.appendChild(v); lb.appendChild(x); document.body.appendChild(lb); v.play().catch(function () {});
+  }
+  Array.prototype.forEach.call(root.querySelectorAll('.nyj-vid'), function (b) {
+    b.addEventListener('click', function () { var img = b.querySelector('img'); lightbox(b.getAttribute('data-src'), img && img.src); });
+  });
+
+  function meres(d) {
+    if (d.mert) return; d.mert = true;
+    try { sessionStorage.setItem(KEY, JSON.stringify(d)); } catch (e) {}
+    window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'nyeremenyjatek_signup', nyj_src: src || 'kozvetlen' });
+    if (typeof window.fbq === 'function') window.fbq('track', 'Lead', { content_name: 'Nyeremenyjatek' });
+    if (typeof window.ttq === 'object' && window.ttq && ttq.track) try { ttq.track('CompleteRegistration', { content_name: 'Nyeremenyjatek' }); } catch (e) {}
+    try { window.Shopify && Shopify.analytics && Shopify.analytics.publish('nyeremenyjatek_signup', { src: src || 'kozvetlen' }); } catch (e) {}
+  }
+
+  function showOk(d) {
+    box.hidden = true; okBox.hidden = false;
+    var fz = $('[data-final]'); if (fz) fz.hidden = true;
+    Array.prototype.forEach.call(root.querySelectorAll('[data-count]'), function (c) { c.hidden = true; });
+    if (d.nev) $('[data-oknev]').textContent = ', ' + d.nev;
+    var link = pageUrl + '?utm_source=megosztas';
+    var txt = 'Ho-ho-hó! Az AeroBelle Mikulás-nyereményjátékán 3 db 45 990 Ft-os hajformázó csomagot sorsolnak ki, és aki jelentkezik, ajándék e-bookot is kap. Ingyenes, 30 mp az egész: ' + link;
+    $('[data-wa]').href = 'https://wa.me/?text=' + encodeURIComponent(txt);
+    $('[data-fb]').href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(link);
+    if (navigator.share) { var nb = $('[data-native]'); nb.hidden = false; nb.onclick = function () { navigator.share({ title: 'AeroBelle nyereményjáték', text: txt, url: link }).catch(function () {}); }; }
+    $('[data-copy]').onclick = function () {
+      var b = this;
+      (navigator.clipboard ? navigator.clipboard.writeText(link) : Promise.reject()).then(function () { b.textContent = 'Link másolva ✓'; }, function () { prompt('Másold ki a linket:', link); });
+    };
+    meres(d);
+    try { okBox.focus({ preventScroll: true }); document.getElementById('jelentkezes').scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) {}
+  }
+
+  // ha már jelentkezett ebben a munkamenetben (vagy a Shopify-űrlapról tért vissza)
+  var mentett = null;
+  try { mentett = JSON.parse(sessionStorage.getItem(KEY) || 'null'); } catch (e) {}
+  if (mentett && mentett.kod) { showOk(mentett); return; }
+
+  // időablak
+  var now = new Date();
+  if (!preview && now < start) { box.hidden = true; $('[data-soon]').hidden = false; var fz0 = $('[data-final]'); if (fz0) fz0.hidden = true; return; }
+  if (!preview && now >= end) { box.hidden = true; $('[data-closed]').hidden = false; var fz = $('[data-final]'); if (fz) fz.hidden = true; return; }
+
+  var cnts = root.querySelectorAll('[data-count]');
+  function showCnt(on) { Array.prototype.forEach.call(cnts, function (c) { c.hidden = !on; }); }
+  function tick() {
+    var ms = end - new Date(); if (ms <= 0) { showCnt(false); return; }
+    showCnt(true);
+    $('[data-d]').textContent = Math.floor(ms / 864e5);
+    $('[data-h]').textContent = Math.floor(ms % 864e5 / 36e5);
+    $('[data-m]').textContent = Math.floor(ms % 36e5 / 6e4);
+  }
+  tick(); setInterval(tick, 30000);
+
+  function kod() {
+    var a = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789', s = '', r = new Uint32Array(6);
+    (window.crypto || window.msCrypto).getRandomValues(r);
+    for (var i = 0; i < 6; i++) s += a.charAt(r[i] % a.length);
+    return s;
+  }
+
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var err = $('[data-err]'); err.hidden = true;
+    var nev = $('#nyj-nev').value.trim(), email = $('#nyj-email').value.trim();
+    if (!nev || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) || !$('[data-chk]').checked) {
+      err.textContent = 'Add meg a keresztneved és egy érvényes e-mail-címet, és fogadd el a játékszabályzatot.'; err.hidden = false; return;
+    }
+    var btn = $('[data-submit]'); btn.disabled = true; btn.textContent = 'Egy pillanat…';
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var to = setTimeout(function () { if (ctrl) ctrl.abort(); }, 15000);
+    // 1) sorsolási lista (AeroBelle háttérszkript)
+    fetch(api, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ t: 'nyj', email: email, nev: nev, kod: kod(), src: src }), signal: ctrl ? ctrl.signal : undefined })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        clearTimeout(to);
+        if (!d || !d.ok) {
+          var h = { email: 'Ellenőrizd az e-mail-címet.', eldobhato: 'Ideiglenes (eldobható) e-mail-címmel nem lehet jelentkezni.', lezarult: 'A jelentkezés már lezárult.', sok: 'Most túl sokan jelentkeznek egyszerre, próbáld újra egy perc múlva.' };
+          throw new Error(h[d && d.hiba] || 'Nem sikerült a jelentkezés. Próbáld újra, vagy írj nekünk: info@aerobelle.hu');
+        }
+        var adat = { kod: d.kod, nev: nev };
+        try { sessionStorage.setItem(KEY, JSON.stringify(adat)); } catch (e) {}
+        // 2) Shopify-ügyfél + hírlevél (címkék alapján indul az e-mail-automatizmus)
+        $('[data-tags]').value = 'lp5, nyeremenyjatek, newsletter' + (src ? ', lp5-src-' + src : '');
+        return fetch('/contact', { method: 'POST', body: new URLSearchParams(new FormData(form)), credentials: 'same-origin' })
+          .then(function (r) {
+            if (/challenge/.test(r.url)) { form.submit(); return; }   // robotellenőrzés: a Shopify oldalán kell befejezni
+            showOk(adat);
+          }, function () { form.submit(); });
+      })
+      .catch(function (e) {
+        clearTimeout(to);
+        btn.disabled = false; btn.textContent = BTN;
+        err.textContent = e && e.name === 'AbortError' ? 'A kapcsolat lassú, próbáld újra.' : (e && e.message) || 'Hiba történt, próbáld újra.';
+        err.hidden = false;
+      });
+  });
+
+  Array.prototype.forEach.call(root.querySelectorAll('[data-tojel]'), function (tj) {
+    tj.addEventListener('click', function (e) { e.preventDefault(); document.getElementById('jelentkezes').scrollIntoView({ behavior: 'smooth', block: 'start' }); setTimeout(function () { var n = document.getElementById('nyj-nev'); if (n) n.focus({ preventScroll: true }); }, 500); });
+  });
+})();
+</script>
+<script>
+document.querySelectorAll('#nyj [data-kovet]').forEach(function(a){a.addEventListener('click',function(){
+  try{(window.dataLayer=window.dataLayer||[]).push({event:'nyeremenyjatek_kovetes',platform:a.getAttribute('data-kovet')});}catch(e){}
+});});
+</script>
+</div></body></html>
