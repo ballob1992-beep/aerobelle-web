@@ -20,7 +20,7 @@
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:600px"><tr><td align="center" style="padding:18px 20px;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.5;color:#8D8782">
 AeroBelle · Balló Balázs EV · 5904 Orosháza, Aranyeső utca 14. · <a href="mailto:info@aerobelle.hu" style="color:#8D8782">info@aerobelle.hu</a><br>
 Azért kaptad ezt a levelet, mert jelentkeztél az AeroBelle Mikulás-nyereményjátékára és feliratkoztál a hírlevelünkre.<br>
-<a href="https://aerobelle.hu/pages/nyeremenyjatek-szabalyzat" style="color:#8D8782">Játékszabályzat</a> · <a href="{{ unsubscribe_link }}" style="color:#8D8782">Leiratkozás</a>
+<a href="https://aerobelle.hu/pages/nyeremenyjatek-szabalyzat" style="color:#8D8782">Játékszabályzat</a> · {{ unsubscribe_link | replace: 'Unsubscribe', 'Leiratkozás' }}
 </td></tr></table>
 </td></tr></table>
 {{ open_tracking_block }}
